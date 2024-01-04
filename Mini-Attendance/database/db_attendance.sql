@@ -32,7 +32,7 @@ CREATE TABLE administrator (
 
 -- Membuat Tabel Dosen
 CREATE TABLE dosen (
-  dosenID INT,
+  dosenID INT IDENTITY(1,1),
   namaDosen VARCHAR(100),
   nipDosen VARCHAR(30) UNIQUE,
   emailDosen VARCHAR(55) UNIQUE,
@@ -78,3 +78,26 @@ VALUES
 INSERT INTO administrator (adminID, username, password)
 VALUES
   (1, 'admin', '12345678');
+
+ALTER TABLE kelas
+DROP CONSTRAINT FK_kelas_dosen;
+
+-- Drop PRIMARY KEY constraint
+ALTER TABLE dosen
+DROP CONSTRAINT PK_dosen;
+
+-- Hapus kolom dosenID yang lama
+ALTER TABLE dosen
+DROP COLUMN dosenID;
+
+-- Tambahkan kembali kolom dosenID dengan definisi baru
+ALTER TABLE dosen
+ADD dosenID INT IDENTITY(1,1) PRIMARY KEY;
+
+-- Tambahkan PRIMARY KEY constraint kembali
+ALTER TABLE dosen
+ADD CONSTRAINT PK_dosen PRIMARY KEY (dosenID);
+
+-- Tambahkan FOREIGN KEY constraint kembali
+ALTER TABLE kelas
+ADD CONSTRAINT FK_kelas_dosen FOREIGN KEY (dosenID) REFERENCES dosen(dosenID);

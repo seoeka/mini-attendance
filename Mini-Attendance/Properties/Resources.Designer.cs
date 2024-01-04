@@ -73,6 +73,96 @@ namespace Mini_Attendance.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap iconAttend {
+            get {
+                object obj = ResourceManager.GetObject("iconAttend", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap iconBeranda {
+            get {
+                object obj = ResourceManager.GetObject("iconBeranda", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap iconClass {
+            get {
+                object obj = ResourceManager.GetObject("iconClass", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap iconDosen {
+            get {
+                object obj = ResourceManager.GetObject("iconDosen", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap iconEvent {
+            get {
+                object obj = ResourceManager.GetObject("iconEvent", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap iconLogout {
+            get {
+                object obj = ResourceManager.GetObject("iconLogout", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap iconMhs {
+            get {
+                object obj = ResourceManager.GetObject("iconMhs", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap iconReport {
+            get {
+                object obj = ResourceManager.GetObject("iconReport", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_class_64 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-class-64", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icons8_exclamation_48 {
             get {
                 object obj = ResourceManager.GetObject("icons8-exclamation-48", resourceCulture);
@@ -83,9 +173,39 @@ namespace Mini_Attendance.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap icons8_logout_48 {
+        internal static System.Drawing.Bitmap icons8_online_application_for_students_studying_from_home_48 {
             get {
-                object obj = ResourceManager.GetObject("icons8-logout-48", resourceCulture);
+                object obj = ResourceManager.GetObject("icons8-online-application-for-students-studying-from-home-48", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_online_application_for_students_studying_from_home_96 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-online-application-for-students-studying-from-home-96", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_roles_64 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-roles-64", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_teacher_64 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-teacher-64", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

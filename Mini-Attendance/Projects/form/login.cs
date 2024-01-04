@@ -19,7 +19,6 @@ namespace Mini_Attendance
                         Initial Catalog = db_attendance;
                         Integrated Security = True;";
 
-
         public login()
         {
             InitializeComponent();
@@ -45,7 +44,7 @@ namespace Mini_Attendance
 
         private void pictureBoxClose_Click(object sender, EventArgs e)
         {
-            Close();
+            Application.Exit();
         }
 
         private void btMasuk_Click(object sender, EventArgs e)
@@ -61,14 +60,18 @@ namespace Mini_Attendance
                 return;
             }
 
+            string userRole = string.Empty;
+            string originalUsername = string.Empty;
+
             try
             {
                 using (SqlConnection connection = new SqlConnection(sql))
                 {
                     connection.Open();
 
-                    using (SqlCommand command = new SqlCommand("SELECT * FROM mahasiswa WHERE nimMhs = @username AND password = @password OR " +
-                                                               "EXISTS (SELECT * FROM dosen WHERE nipDosen = @username AND password = @password)", connection))
+                    using (SqlCommand command = new SqlCommand("SELECT * FROM mahasiswa WHERE nimMhs = @username AND password = @password " +
+                                            "OR EXISTS (SELECT * FROM dosen WHERE nipDosen = @username AND password = @password) " +
+                                            "OR EXISTS (SELECT * FROM administrator WHERE username = @username AND password = @password)", connection))
                     {
                         command.Parameters.AddWithValue("@username", username);
                         command.Parameters.AddWithValue("@password", password);
@@ -77,9 +80,12 @@ namespace Mini_Attendance
                         {
                             if (reader.Read())
                             {
-                                main mainForm = new main();
-                                mainForm.Show();
+                                var result = DetermineUserRole(username);
+                                userRole = result.userRole;
+                                originalUsername = result.username;
 
+                                main mainForm = new main(userRole, originalUsername);
+                                mainForm.Show();
                                 this.Hide();
                             }
                             else
@@ -123,5 +129,56 @@ namespace Mini_Attendance
         {
             toolTip.SetToolTip(pictureBoxUnhide, "Perlihatkan Password");
         }
+
+        private (string userRole, string username) DetermineUserRole(string inputUsername)
+        {
+            using (SqlConnection connection = new SqlConnection(sql))
+            {
+                connection.Open();
+
+                using (SqlCommand command = new SqlCommand("SELECT * FROM mahasiswa WHERE nimMhs = @username", connection))
+                {
+                    command.Parameters.AddWithValue("@username", inputUsername);
+
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            return ("Mahasiswa", inputUsername);
+                        }
+                    }
+                }
+
+                using (SqlCommand command = new SqlCommand("SELECT * FROM dosen WHERE nipDosen = @username", connection))
+                {
+                    command.Parameters.AddWithValue("@username", inputUsername);
+
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            return ("Dosen", inputUsername);
+                        }
+                    }
+                }
+
+                using (SqlCommand command = new SqlCommand("SELECT * FROM administrator WHERE username = @username", connection))
+                {
+                    command.Parameters.AddWithValue("@username", inputUsername);
+
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            return ("Admin", inputUsername);
+                        }
+                    }
+                }
+            }
+
+            // Jika tidak ada kecocokan, kembalikan tuple kosong
+            return (string.Empty, string.Empty);
+        }
+
     }
 }

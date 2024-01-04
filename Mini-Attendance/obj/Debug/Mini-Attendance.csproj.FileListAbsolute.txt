@@ -4,8 +4,11 @@ C:\Users\ekasari\source\repos\Mini-Attendance\Mini-Attendance\bin\Debug\Mini-Att
 C:\Users\ekasari\source\repos\Mini-Attendance\Mini-Attendance\obj\Debug\Mini-Attendance.csproj.AssemblyReference.cache
 C:\Users\ekasari\source\repos\Mini-Attendance\Mini-Attendance\obj\Debug\Mini_Attendance.form.main.resources
 C:\Users\ekasari\source\repos\Mini-Attendance\Mini-Attendance\obj\Debug\Mini_Attendance.login.resources
+C:\Users\ekasari\source\repos\Mini-Attendance\Mini-Attendance\obj\Debug\Mini_Attendance.Projects.user_controls.UserControlBeranda.resources
+C:\Users\ekasari\source\repos\Mini-Attendance\Mini-Attendance\obj\Debug\Mini_Attendance.Projects.user_controls.UserControlMahasiswa.resources
 C:\Users\ekasari\source\repos\Mini-Attendance\Mini-Attendance\obj\Debug\Mini_Attendance.Properties.Resources.resources
 C:\Users\ekasari\source\repos\Mini-Attendance\Mini-Attendance\obj\Debug\Mini-Attendance.csproj.GenerateResource.cache
 C:\Users\ekasari\source\repos\Mini-Attendance\Mini-Attendance\obj\Debug\Mini-Attendance.csproj.CoreCompileInputs.cache
 C:\Users\ekasari\source\repos\Mini-Attendance\Mini-Attendance\obj\Debug\Mini-Attendance.exe
 C:\Users\ekasari\source\repos\Mini-Attendance\Mini-Attendance\obj\Debug\Mini-Attendance.pdb
+C:\Users\ekasari\source\repos\Mini-Attendance\Mini-Attendance\obj\Debug\Mini_Attendance.Projects.user_controls.UserControlDo.resources

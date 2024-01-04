@@ -1,0 +1,191 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Data.SqlClient;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace Mini_Attendance.Projects.user_controls
+{
+    public partial class UserControlDo : UserControl
+    {
+        private SqlConnection connection;
+        private int selectedDosenID; // Menyimpan ID dari baris yang dipilih
+        private bool isEditing = false; // Menandai apakah sedang dalam mode edit
+
+        public UserControlDo()
+        {
+            InitializeComponent();
+            connection = DatabaseManager.GetConnection();
+
+            DisplayDataDosen();
+
+            TextBoxHelper.EnableTextBoxes(false, textBoxNM1, textBoxNI1, textBoxEM1, textBoxPW1);
+            btEdi.Enabled = false;
+            btDel.Enabled = false;
+
+            textBoxNM1.Leave += TextBoxEdit_Leave;
+            textBoxNI1.Leave += TextBoxEdit_Leave;
+            textBoxEM1.Leave += TextBoxEdit_Leave;
+            textBoxPW1.Leave += TextBoxEdit_Leave;
+        }
+
+        private void UserControlDo_Leave(object sender, EventArgs e)
+        {
+            if (!isEditing)
+            {
+                TextBoxHelper.ClearTextBoxes(textBoxNM, textBoxNI, textBoxEM, textBoxPW,
+                                     textBoxNM1, textBoxNI1, textBoxEM1, textBoxPW1);
+            }
+        }
+
+
+        private void DisplayDataDosen()
+        {
+            string query = "SELECT * FROM dosen";
+
+            using (SqlCommand command = new SqlCommand(query, connection))
+            {
+                using (SqlDataAdapter adapter = new SqlDataAdapter(command))
+                {
+                    DataTable dataTable = new DataTable();
+                    adapter.Fill(dataTable);
+
+                    dataTable.Columns["dosenID"].ColumnName = "ID";
+                    dataTable.Columns["namaDosen"].ColumnName = "Nama";
+                    dataTable.Columns["nipDosen"].ColumnName = "NIP";
+                    dataTable.Columns["emailDosen"].ColumnName = "Email";
+                    dataTable.Columns["password"].ColumnName = "Password";
+
+                    dataGridViewDosen.DataSource = dataTable;
+                }
+            }
+        }
+
+        private void btAdd_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string namaDosen = textBoxNM.Text;
+                string nipDosen = textBoxNI.Text;
+                string emailDosen = textBoxEM.Text;
+                string passwordDosen = textBoxPW.Text;
+
+                if (string.IsNullOrEmpty(namaDosen) || string.IsNullOrEmpty(nipDosen) ||
+                    string.IsNullOrEmpty(emailDosen) || string.IsNullOrEmpty(passwordDosen))
+                {
+                    MessageBox.Show("Semua kolom harus diisi.");
+                    return;
+                }
+
+                string query = "INSERT INTO dosen (namaDosen, nipDosen, emailDosen, password) VALUES (@Nama, @NIP, @Email, @Password)";
+                DatabaseManager.ExecuteNonQuery(query, "@Nama", namaDosen, "@NIP", nipDosen, "@Email", emailDosen, "@Password", passwordDosen);
+                MessageBox.Show("Data berhasil ditambahkan.");
+                DisplayDataDosen();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
+        }
+
+        private void dataGridViewDosen_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow selectedRow = dataGridViewDosen.Rows[e.RowIndex];
+
+                selectedDosenID = Convert.ToInt32(selectedRow.Cells["ID"].Value); // Pastikan nama kolom ID disesuaikan
+
+                TextBoxHelper.FillTextBoxes(selectedRow, textBoxNM1, textBoxNI1, textBoxEM1, textBoxPW1);
+                TextBoxHelper.EnableTextBoxes(true, textBoxNM1, textBoxNI1, textBoxEM1, textBoxPW1);
+                btEdi.Enabled = true;
+                btDel.Enabled = true;
+                isEditing = true;
+            }
+        }
+
+        private void btEdi_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string namaDosen = textBoxNM1.Text;
+                string nipDosen = textBoxNI1.Text;
+                string emailDosen = textBoxEM1.Text;
+                string passwordDosen = textBoxPW1.Text;
+
+                string query = "UPDATE dosen SET namaDosen = @Nama, nipDosen = @NIP, emailDosen = @Email, password = @Password WHERE dosenID = @ID";
+
+                DatabaseManager.ExecuteNonQuery(query, "@ID", selectedDosenID, "@Nama", namaDosen, "@NIP", nipDosen, "@Email", emailDosen, "@Password", passwordDosen);
+
+                MessageBox.Show("Data berhasil diupdate.");
+                DisplayDataDosen();
+
+                TextBoxHelper.ClearTextBoxes(textBoxNM1, textBoxNI1, textBoxEM1, textBoxPW1);
+                TextBoxHelper.EnableTextBoxes(false, textBoxNM1, textBoxNI1, textBoxEM1, textBoxPW1);
+                btEdi.Enabled = false;
+                btDel.Enabled = false;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
+        }
+
+        private void TextBoxEdit_Leave(object sender, EventArgs e)
+        {
+            isEditing = false;
+        }
+
+        private void btDel_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (selectedDosenID != 0)
+                {
+                    // Minta konfirmasi dari pengguna
+                    DialogResult result = MessageBox.Show("Apakah Anda yakin ingin menghapus data ini?", "Konfirmasi Hapus", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                    if (result == DialogResult.Yes)
+                    {
+                        string query = "DELETE FROM dosen WHERE dosenID = @ID";
+
+                        using (SqlCommand command = new SqlCommand(query, connection))
+                        {
+                            command.Parameters.AddWithValue("@ID", selectedDosenID);
+
+                            int rowsAffected = command.ExecuteNonQuery();
+
+                            if (rowsAffected > 0)
+                            {
+                                MessageBox.Show("Data berhasil dihapus.");
+                                DisplayDataDosen();
+                                TextBoxHelper.ClearTextBoxes(textBoxNM1, textBoxNI1, textBoxEM1, textBoxPW1);
+                                TextBoxHelper.EnableTextBoxes(false, textBoxNM1, textBoxNI1, textBoxEM1, textBoxPW1);
+                                btEdi.Enabled = false;
+                                btDel.Enabled = false;
+                            }
+                            else
+                            {
+                                MessageBox.Show("Gagal menghapus data.");
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Pilih baris untuk dihapus.");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
+        }
+
+    }
+}

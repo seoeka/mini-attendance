@@ -7,7 +7,7 @@ namespace Mini_Attendance
 {
     public class RoundedPanel : Panel
     {
-        private int _borderRadius = 100;
+        private int _borderRadius = 10;
         private Color _colorPanel = ColorTranslator.FromHtml("#A0C1C7");
      
         public int BorderRadius

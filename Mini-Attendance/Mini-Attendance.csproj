@@ -46,12 +46,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Projects\class\DatabaseManager.cs" />
     <Compile Include="Projects\class\RoundedButton.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Projects\class\RoundedPanel.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Projects\class\TextBoxHelper.cs" />
     <Compile Include="Projects\form\main.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -65,12 +67,39 @@
       <DependentUpon>login.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
+    <Compile Include="Projects\user-controls\UserControlBeranda.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Projects\user-controls\UserControlBeranda.Designer.cs">
+      <DependentUpon>UserControlBeranda.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Projects\user-controls\UserControlDo.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Projects\user-controls\UserControlDo.Designer.cs">
+      <DependentUpon>UserControlDo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Projects\user-controls\UserControlMahasiswa.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Projects\user-controls\UserControlMahasiswa.Designer.cs">
+      <DependentUpon>UserControlMahasiswa.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Projects\form\main.resx">
       <DependentUpon>main.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Projects\form\login.resx">
       <DependentUpon>login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Projects\user-controls\UserControlBeranda.resx">
+      <DependentUpon>UserControlBeranda.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Projects\user-controls\UserControlDo.resx">
+      <DependentUpon>UserControlDo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Projects\user-controls\UserControlMahasiswa.resx">
+      <DependentUpon>UserControlMahasiswa.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -115,6 +144,96 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\pwHide.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\layout.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\report.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\dashboard.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\student.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\dboard.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\professor.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\teacher.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\classmates.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\webinar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\attendance.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\calendar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\petition.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\dahsb.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\minimizeWindow1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\log-out.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconBeranda.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconBeranda1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconAttend.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconBeranda2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconClass.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconDosen.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconEvent.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconLogout.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconMhs.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconReport.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-class-64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-teacher-64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-online-application-for-students-studying-from-home-48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-online-application-for-students-studying-from-home-96.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-roles-64.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
