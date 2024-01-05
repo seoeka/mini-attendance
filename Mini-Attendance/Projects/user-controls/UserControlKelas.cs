@@ -16,7 +16,6 @@ namespace Mini_Attendance.Projects.user_controls
     {
         private SqlConnection connection;
         private int selectedKelasID;
-        private bool isEditing = false;
         public UserControlKelas()
         {
             InitializeComponent();
@@ -44,14 +43,6 @@ namespace Mini_Attendance.Projects.user_controls
 
             dateTimePickerEnd1.Value = DateTime.Now;
             dateTimePickerEnd1.Enabled = false;
-        }
-
-        private void UserControlKelas_Leave(object sender, EventArgs e)
-        {
-            if (!isEditing)
-            {
-                ClearAndDisable();
-            }
         }
 
         private void DisplayDataKelas()
@@ -162,7 +153,6 @@ namespace Mini_Attendance.Projects.user_controls
 
                 dateTimePickerSet1.Value = Convert.ToDateTime(selectedRow.Cells["Tanggal"].Value);
 
-                // Ganti dateTimePickerEnd1 dengan tanggal akhir dari data kelas yang dipilih
                 dateTimePickerEnd1.Value = GetEndDate(selectedRow);
 
                 comboBoxDS1.Enabled = true;
@@ -174,7 +164,6 @@ namespace Mini_Attendance.Projects.user_controls
                 dateTimePickerEnd1.Enabled = true;
                 btEdi.Enabled = true;
                 btDel.Enabled = true;
-                isEditing = true;
             }
         }
 

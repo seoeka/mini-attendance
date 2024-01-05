@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.VisualStyles;
 using static Mini_Attendance.form.main;
+using static Mini_Attendance.Projects.user_controls.UserControlKelas;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Mini_Attendance.Projects.user_controls
@@ -20,6 +21,7 @@ namespace Mini_Attendance.Projects.user_controls
         private int selectedKehadiranKelasID;
         private bool isEditing = false;
         public string UserRole { get; set; }
+        public int UserID { get; set; }
 
         public UserControlHadir()
         {
@@ -51,6 +53,7 @@ namespace Mini_Attendance.Projects.user_controls
 
             comboBoxMHS.SelectedIndex = -1;
             comboBoxKLS.SelectedIndex = -1;
+            comboBoxMHS1.SelectedIndex = -1;
             comboBoxMHS1.Enabled = false;
 
             comboBoxSTT.SelectedIndex = -1;
@@ -61,14 +64,6 @@ namespace Mini_Attendance.Projects.user_controls
             dateTimePicker1.Value = DateTime.Now;
             dateTimePicker.Enabled = false;
             dateTimePicker1.Enabled = false;
-        }
-
-        private void UserControlKelas_Leave(object sender, EventArgs e)
-        {
-            if (!isEditing)
-            {
-                ClearAndDisable();
-            }
         }
         private void comboBoxKLS_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -114,13 +109,17 @@ namespace Mini_Attendance.Projects.user_controls
 
         private DataTable FetchActualDataForClass(string selectedClass)
         {
-            string query = "SELECT mhs.Nama AS Mahasiswa, kelas.Nama AS Kelas, kehadiran.Tanggal, kehadiran.Status " +
+            string query = "SELECT kehadiran.ID, mhs.Nama AS Mahasiswa, kelas.Nama AS Kelas, kehadiran.Tanggal, kehadiran.Status " +
                            "FROM Kehadiran kehadiran " +
                            "JOIN Mahasiswa mhs ON kehadiran.mhsID = mhs.ID " +
                            "JOIN Kelas kelas ON kehadiran.kelasID = kelas.ID " +
                            "WHERE kelas.Nama = @SelectedClass";
 
             DataTable dataTable = new DataTable();
+            if (connection.State == ConnectionState.Closed)
+            {
+                connection.Open();
+            }
 
             using (SqlCommand command = new SqlCommand(query, connection))
             {
@@ -138,8 +137,14 @@ namespace Mini_Attendance.Projects.user_controls
                     MessageBox.Show("Terjadi kesalahan saat mengambil data: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+            if (connection.State == ConnectionState.Open)
+            {
+                connection.Close();
+            }
+
             return dataTable;
         }
+
 
         private void FillComboBoxKLS()
         {
@@ -201,6 +206,10 @@ namespace Mini_Attendance.Projects.user_controls
         private void FillComboBoxMHS1()
         {
             comboBoxMHS1.Items.Clear();
+            if (connection.State == ConnectionState.Closed)
+            {
+                connection.Open();
+            }
 
             string query = "SELECT ID, Nama FROM Mahasiswa";
             using (SqlCommand command = new SqlCommand(query, connection))
@@ -215,7 +224,14 @@ namespace Mini_Attendance.Projects.user_controls
                     }
                 }
             }
+
+            // Tutup koneksi setelah selesai menggunakan
+            if (connection.State == ConnectionState.Open)
+            {
+                connection.Close();
+            }
         }
+
 
         public class MahasiswaItem
         {
@@ -244,7 +260,7 @@ namespace Mini_Attendance.Projects.user_controls
 
                 if (UserRole == "Mahasiswa")
                 {
-                    selectedMahasiswaID = Convert.ToInt32(UserRole);
+                    selectedMahasiswaID = Convert.ToInt32(UserID);
                 }
                 else
                 {
@@ -257,6 +273,11 @@ namespace Mini_Attendance.Projects.user_controls
                         MessageBox.Show("Silahkan pilih Mahasiswa.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
+                }
+
+                if (connection.State == ConnectionState.Closed)
+                {
+                    connection.Open();
                 }
 
                 string status = comboBoxSTT.SelectedItem?.ToString();
@@ -286,6 +307,115 @@ namespace Mini_Attendance.Projects.user_controls
             else
             {
                 MessageBox.Show("Silahkan pilih Kelas.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void dataGridViewKehadiranKelas_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow selectedRow = dataGridViewKehadiranKelas.Rows[e.RowIndex];
+                selectedKehadiranKelasID = Convert.ToInt32(selectedRow.Cells["ID"].Value);
+
+                dateTimePicker1.Value = Convert.ToDateTime(selectedRow.Cells["Tanggal"].Value);
+                comboBoxSTT1.SelectedItem = selectedRow.Cells["Status"].Value.ToString();
+                string selectedMahasiswa = selectedRow.Cells["Mahasiswa"].Value.ToString();
+                comboBoxMHS1.SelectedItem = comboBoxMHS1.Items.Cast<MahasiswaItem>().FirstOrDefault(item => item.Nama == selectedMahasiswa);
+
+                if (UserRole == "Mahasiswa")
+                {
+                    comboBoxMHS1.Enabled = false;
+                    dateTimePicker1.Enabled = true;
+                    comboBoxSTT1.Enabled = true;
+                    btEdi.Enabled = true;
+                    btDel.Enabled = false;
+                }
+                else
+                {
+                    comboBoxMHS1.Enabled = false;
+                    dateTimePicker1.Enabled = true;
+                    comboBoxSTT1.Enabled = true;
+                    btEdi.Enabled = true;
+                    btDel.Enabled = true;
+                }
+
+                isEditing = true;
+            }
+        }
+
+        private void btEdi_Click(object sender, EventArgs e)
+        {
+            if (selectedKehadiranKelasID > 0)
+            {
+                try
+                {
+                    DateTime tanggal = dateTimePicker1.Value.Date;
+                    string status = comboBoxSTT1.SelectedItem?.ToString();
+
+                    using (SqlCommand command = new SqlCommand("UPDATE Kehadiran SET Tanggal = @Tanggal, Status = @status WHERE ID = @ID", connection))
+                    {
+                        command.Parameters.AddWithValue("@ID", selectedKehadiranKelasID);
+                        command.Parameters.AddWithValue("@Tanggal", tanggal);
+                        command.Parameters.AddWithValue("@status", status);
+
+                        if (connection.State == ConnectionState.Closed)
+                            connection.Open();
+
+                        command.ExecuteNonQuery();
+
+                        MessageBox.Show("Data kehadiran berhasil diperbarui.", "Sukses", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        DisplayDataKehadiranKelas();
+                        ClearAndDisable();
+                        isEditing = false;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Terjadi kesalahan: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                finally
+                {
+                    if (connection.State == ConnectionState.Open)
+                        connection.Close();
+                }
+            }
+        }
+
+        private void btDel_Click(object sender, EventArgs e)
+        {
+            if (selectedKehadiranKelasID > 0)
+            {
+                DialogResult result = MessageBox.Show("Anda yakin ingin menghapus data kehadiran ini?", "Konfirmasi Hapus", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                if (result == DialogResult.Yes)
+                {
+                    try
+                    {
+                        using (SqlCommand command = new SqlCommand("DELETE FROM Kehadiran WHERE ID = @ID", connection))
+                        {
+                            command.Parameters.AddWithValue("@ID", selectedKehadiranKelasID);
+
+                            if (connection.State == ConnectionState.Closed)
+                                connection.Open();
+
+                            command.ExecuteNonQuery();
+
+                            MessageBox.Show("Data kehadiran berhasil dihapus.", "Sukses", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            DisplayDataKehadiranKelas();
+                            ClearAndDisable();
+                            isEditing = false;
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Terjadi kesalahan: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    finally
+                    {
+                        if (connection.State == ConnectionState.Open)
+                            connection.Close();
+                    }
+                }
             }
         }
     }

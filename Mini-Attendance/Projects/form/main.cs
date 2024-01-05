@@ -38,11 +38,15 @@ namespace Mini_Attendance.form
                 buttonKelas.Visible = false;
                 buttonMhs.Visible = false;
                 buttonDosen.Visible = false;
+
+                int selectedMahasiswaID = DatabaseUtilities.GetMahasiswaIDByNIM(originalUsername);
+                userControlHadir1.UserID = selectedMahasiswaID;
             }
 
             loginForm = new login();
 
             connection = DatabaseManager.GetConnection();
+
         }
 
         private void HideAndClearUserControl(UserControl userControl)

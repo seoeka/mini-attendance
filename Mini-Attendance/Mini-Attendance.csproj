@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Projects\class\DatabaseManager.cs" />
+    <Compile Include="Projects\class\DatabaseUtilities.cs" />
     <Compile Include="Projects\class\RoundedButton.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -79,6 +80,12 @@
     <Compile Include="Projects\user-controls\UserControlDo.Designer.cs">
       <DependentUpon>UserControlDo.cs</DependentUpon>
     </Compile>
+    <Compile Include="Projects\user-controls\UserControlEvent.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Projects\user-controls\UserControlEvent.Designer.cs">
+      <DependentUpon>UserControlEvent.cs</DependentUpon>
+    </Compile>
     <Compile Include="Projects\user-controls\UserControlHadir.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -90,6 +97,12 @@
     </Compile>
     <Compile Include="Projects\user-controls\UserControlKelas.Designer.cs">
       <DependentUpon>UserControlKelas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Projects\user-controls\UserControlLaporan.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Projects\user-controls\UserControlLaporan.Designer.cs">
+      <DependentUpon>UserControlLaporan.cs</DependentUpon>
     </Compile>
     <Compile Include="Projects\user-controls\UserControlMahasiswa.cs">
       <SubType>UserControl</SubType>
@@ -110,11 +123,17 @@
     <EmbeddedResource Include="Projects\user-controls\UserControlDo.resx">
       <DependentUpon>UserControlDo.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Projects\user-controls\UserControlEvent.resx">
+      <DependentUpon>UserControlEvent.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Projects\user-controls\UserControlHadir.resx">
       <DependentUpon>UserControlHadir.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Projects\user-controls\UserControlKelas.resx">
       <DependentUpon>UserControlKelas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Projects\user-controls\UserControlLaporan.resx">
+      <DependentUpon>UserControlLaporan.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Projects\user-controls\UserControlMahasiswa.resx">
       <DependentUpon>UserControlMahasiswa.cs</DependentUpon>

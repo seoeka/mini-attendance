@@ -30,9 +30,6 @@
         {
             this.dateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.dataGridViewKehadiranKelas = new System.Windows.Forms.DataGridView();
-            this.btDel = new RoundedButton();
-            this.btEdi = new RoundedButton();
-            this.btAdd = new RoundedButton();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -49,6 +46,9 @@
             this.label7 = new System.Windows.Forms.Label();
             this.comboBoxSTT1 = new System.Windows.Forms.ComboBox();
             this.label10 = new System.Windows.Forms.Label();
+            this.btDel = new RoundedButton();
+            this.btEdi = new RoundedButton();
+            this.btAdd = new RoundedButton();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewKehadiranKelas)).BeginInit();
             this.SuspendLayout();
             // 
@@ -75,49 +75,7 @@
             this.dataGridViewKehadiranKelas.ReadOnly = true;
             this.dataGridViewKehadiranKelas.Size = new System.Drawing.Size(759, 408);
             this.dataGridViewKehadiranKelas.TabIndex = 110;
-            // 
-            // btDel
-            // 
-            this.btDel.BorderRadius = 10;
-            this.btDel.ButtonColor = System.Drawing.Color.Firebrick;
-            this.btDel.Font = new System.Drawing.Font("SF Pro Display", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btDel.ForeColor = System.Drawing.Color.White;
-            this.btDel.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
-            this.btDel.Location = new System.Drawing.Point(266, 420);
-            this.btDel.Name = "btDel";
-            this.btDel.Size = new System.Drawing.Size(100, 33);
-            this.btDel.TabIndex = 109;
-            this.btDel.Text = "Hapus";
-            this.btDel.UseVisualStyleBackColor = true;
-            // 
-            // btEdi
-            // 
-            this.btEdi.BorderRadius = 10;
-            this.btEdi.ButtonColor = System.Drawing.Color.MediumSeaGreen;
-            this.btEdi.Font = new System.Drawing.Font("SF Pro Display", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btEdi.ForeColor = System.Drawing.Color.White;
-            this.btEdi.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(161)))), ((int)(((byte)(101)))));
-            this.btEdi.Location = new System.Drawing.Point(160, 420);
-            this.btEdi.Name = "btEdi";
-            this.btEdi.Size = new System.Drawing.Size(100, 33);
-            this.btEdi.TabIndex = 108;
-            this.btEdi.Text = "Edit";
-            this.btEdi.UseVisualStyleBackColor = true;
-            // 
-            // btAdd
-            // 
-            this.btAdd.BorderRadius = 10;
-            this.btAdd.ButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(154)))), ((int)(((byte)(240)))));
-            this.btAdd.Font = new System.Drawing.Font("SF Pro Display", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btAdd.ForeColor = System.Drawing.Color.White;
-            this.btAdd.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(131)))), ((int)(((byte)(227)))));
-            this.btAdd.Location = new System.Drawing.Point(266, 239);
-            this.btAdd.Name = "btAdd";
-            this.btAdd.Size = new System.Drawing.Size(100, 33);
-            this.btAdd.TabIndex = 103;
-            this.btAdd.Text = "Tambah";
-            this.btAdd.UseVisualStyleBackColor = true;
-            this.btAdd.Click += new System.EventHandler(this.btAdd_Click);
+            this.dataGridViewKehadiranKelas.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewKehadiranKelas_CellDoubleClick);
             // 
             // label5
             // 
@@ -282,6 +240,51 @@
             this.label10.TabIndex = 133;
             this.label10.Text = "Status :";
             this.label10.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // btDel
+            // 
+            this.btDel.BorderRadius = 10;
+            this.btDel.ButtonColor = System.Drawing.Color.Firebrick;
+            this.btDel.Font = new System.Drawing.Font("SF Pro Display", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btDel.ForeColor = System.Drawing.Color.White;
+            this.btDel.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.btDel.Location = new System.Drawing.Point(266, 420);
+            this.btDel.Name = "btDel";
+            this.btDel.Size = new System.Drawing.Size(100, 33);
+            this.btDel.TabIndex = 109;
+            this.btDel.Text = "Hapus";
+            this.btDel.UseVisualStyleBackColor = true;
+            this.btDel.Click += new System.EventHandler(this.btDel_Click);
+            // 
+            // btEdi
+            // 
+            this.btEdi.BorderRadius = 10;
+            this.btEdi.ButtonColor = System.Drawing.Color.MediumSeaGreen;
+            this.btEdi.Font = new System.Drawing.Font("SF Pro Display", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btEdi.ForeColor = System.Drawing.Color.White;
+            this.btEdi.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(161)))), ((int)(((byte)(101)))));
+            this.btEdi.Location = new System.Drawing.Point(160, 420);
+            this.btEdi.Name = "btEdi";
+            this.btEdi.Size = new System.Drawing.Size(100, 33);
+            this.btEdi.TabIndex = 108;
+            this.btEdi.Text = "Edit";
+            this.btEdi.UseVisualStyleBackColor = true;
+            this.btEdi.Click += new System.EventHandler(this.btEdi_Click);
+            // 
+            // btAdd
+            // 
+            this.btAdd.BorderRadius = 10;
+            this.btAdd.ButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(154)))), ((int)(((byte)(240)))));
+            this.btAdd.Font = new System.Drawing.Font("SF Pro Display", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btAdd.ForeColor = System.Drawing.Color.White;
+            this.btAdd.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(131)))), ((int)(((byte)(227)))));
+            this.btAdd.Location = new System.Drawing.Point(266, 239);
+            this.btAdd.Name = "btAdd";
+            this.btAdd.Size = new System.Drawing.Size(100, 33);
+            this.btAdd.TabIndex = 103;
+            this.btAdd.Text = "Tambah";
+            this.btAdd.UseVisualStyleBackColor = true;
+            this.btAdd.Click += new System.EventHandler(this.btAdd_Click);
             // 
             // UserControlHadir
             // 

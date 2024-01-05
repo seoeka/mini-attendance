@@ -88,8 +88,6 @@ namespace Mini_Attendance
                         var result = DetermineUserRole(username);
                         userRole = result.userRole;
                         originalUsername = result.username;
-                        MessageBox.Show($"Username: {originalUsername}", "Username Result", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
 
                         main mainForm = new main(userRole, originalUsername);
                         mainForm.Show();
