@@ -31,7 +31,6 @@ namespace Mini_Attendance.form
             {
                 buttonKelas.Visible = false;
                 buttonDosen.Visible = false;
-                buttonAcara.Visible = false;
             }
             else if (role == "Mahasiswa")
             {
@@ -40,6 +39,7 @@ namespace Mini_Attendance.form
                 buttonDosen.Visible = false;
 
                 int selectedMahasiswaID = DatabaseUtilities.GetMahasiswaIDByNIM(originalUsername);
+                userControlHadir1.UserID = selectedMahasiswaID;
                 userControlHadir1.UserID = selectedMahasiswaID;
             }
 
@@ -166,10 +166,13 @@ namespace Mini_Attendance.form
         {
             ucActive(buttonBeranda);
             userControlBeranda1.Visible = true;
+            userControlBeranda1.UserRole = userRole;
             HideAndClearUserControl(userControlDo1);
             HideAndClearUserControl(userControlMahasiswa1);
             HideAndClearUserControl(userControlKelas1);
             HideAndClearUserControl(userControlHadir1);
+            HideAndClearUserControl(userControlEvent1);
+            HideAndClearUserControl(userControlLaporan1);
         }
 
         private void buttonDosen_Click(object sender, EventArgs e)
@@ -180,6 +183,9 @@ namespace Mini_Attendance.form
             HideAndClearUserControl(userControlMahasiswa1);
             HideAndClearUserControl(userControlKelas1);
             HideAndClearUserControl(userControlHadir1);
+            HideAndClearUserControl(userControlEvent1);
+            HideAndClearUserControl(userControlLaporan1);
+
         }
 
         private void buttonMhs_Click(object sender, EventArgs e)
@@ -190,6 +196,8 @@ namespace Mini_Attendance.form
             userControlMahasiswa1.Visible = true;
             HideAndClearUserControl(userControlKelas1);
             HideAndClearUserControl(userControlHadir1);
+            HideAndClearUserControl(userControlEvent1);
+            HideAndClearUserControl(userControlLaporan1);
         }
 
         private void buttonKelas_Click(object sender, EventArgs e)
@@ -200,6 +208,8 @@ namespace Mini_Attendance.form
             HideAndClearUserControl(userControlMahasiswa1);
             userControlKelas1.Visible = true;
             HideAndClearUserControl(userControlHadir1);
+            HideAndClearUserControl(userControlEvent1);
+            HideAndClearUserControl(userControlLaporan1);
         }
 
         private void buttonHadir_Click(object sender, EventArgs e)
@@ -211,7 +221,8 @@ namespace Mini_Attendance.form
             HideAndClearUserControl(userControlKelas1);
             userControlHadir1.UserRole = userRole;
             userControlHadir1.Visible = true;
-
+            HideAndClearUserControl(userControlEvent1);
+            HideAndClearUserControl(userControlLaporan1);
         }
 
         private void buttonAcara_Click(object sender, EventArgs e)
@@ -222,6 +233,10 @@ namespace Mini_Attendance.form
             HideAndClearUserControl(userControlMahasiswa1);
             HideAndClearUserControl(userControlKelas1);
             HideAndClearUserControl(userControlHadir1);
+            userControlEvent1.Visible = true;
+            userControlEvent1.UserRole = userRole;
+            HideAndClearUserControl(userControlLaporan1);
+
         }
 
         private void buttonLapor_Click(object sender, EventArgs e)
@@ -232,6 +247,8 @@ namespace Mini_Attendance.form
             HideAndClearUserControl(userControlMahasiswa1);
             HideAndClearUserControl(userControlKelas1);
             HideAndClearUserControl(userControlHadir1);
+            HideAndClearUserControl(userControlEvent1); 
+            userControlLaporan1.Visible = true;
         }
 
         private void pictureBoxMin_MouseHover(object sender, EventArgs e)

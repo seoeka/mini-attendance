@@ -139,14 +139,17 @@
   <data name="icons8-online-application-for-students-studying-from-home-48" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icons8-online-application-for-students-studying-from-home-48.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="icons8-roles-64" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icons8-roles-64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="icons8-exclamation-48" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icons8-exclamation-48.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="iconAttend" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\iconAttend.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="icons8-online-application-for-students-studying-from-home-96" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icons8-online-application-for-students-studying-from-home-96.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="iconEvent" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\iconEvent.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="minimizeWindow" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\minimizeWindow.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -169,10 +172,16 @@
   <data name="iconClass" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\iconClass.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="iconEvent" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\iconEvent.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="iconAttend" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\iconAttend.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="icons8-roles-64" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icons8-roles-64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="icons-ds" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icons-ds.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icons-mhs" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icons-mhs.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icons-um" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icons-um.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

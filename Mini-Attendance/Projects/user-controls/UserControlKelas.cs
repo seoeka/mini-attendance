@@ -56,6 +56,10 @@ namespace Mini_Attendance.Projects.user_controls
             string query = "SELECT ID, Nama FROM Dosen";
             using (SqlCommand command = new SqlCommand(query, connection))
             {
+                if (connection.State == ConnectionState.Closed)
+                {
+                    connection.Open();
+                }
                 using (SqlDataReader reader = command.ExecuteReader())
                 {
                     while (reader.Read())

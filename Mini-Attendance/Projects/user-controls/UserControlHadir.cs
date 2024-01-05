@@ -116,6 +116,7 @@ namespace Mini_Attendance.Projects.user_controls
                            "WHERE kelas.Nama = @SelectedClass";
 
             DataTable dataTable = new DataTable();
+
             if (connection.State == ConnectionState.Closed)
             {
                 connection.Open();

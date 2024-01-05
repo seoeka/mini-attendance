@@ -28,49 +28,37 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.roundedPanel = new Mini_Attendance.RoundedPanel();
             this.labelRole = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.lblTitle = new System.Windows.Forms.Label();
-            this.roundedPanel1 = new Mini_Attendance.RoundedPanel();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.roundedPanel2 = new Mini_Attendance.RoundedPanel();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
             this.roundedPanelEvent = new Mini_Attendance.RoundedPanel();
-            this.labelTitleEvent = new System.Windows.Forms.Label();
-            this.panelMainEvent = new System.Windows.Forms.Panel();
+            this.panelEvents = new System.Windows.Forms.Panel();
             this.panelEvent = new System.Windows.Forms.Panel();
-            this.label7 = new System.Windows.Forms.Label();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBoxEvent = new System.Windows.Forms.PictureBox();
-            this.roundedPanel.SuspendLayout();
-            this.roundedPanel1.SuspendLayout();
-            this.roundedPanel2.SuspendLayout();
+            this.labelEvent = new System.Windows.Forms.Label();
+            this.labelTitleEvent = new System.Windows.Forms.Label();
+            this.roundedPanel2 = new Mini_Attendance.RoundedPanel();
+            this.labelJM = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.roundedPanel1 = new Mini_Attendance.RoundedPanel();
+            this.labelJD = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.roundedPanel = new Mini_Attendance.RoundedPanel();
+            this.labelJK = new System.Windows.Forms.Label();
+            this.lblTitle = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.roundedPanelEvent.SuspendLayout();
-            this.panelMainEvent.SuspendLayout();
+            this.panelEvents.SuspendLayout();
             this.panelEvent.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxEvent)).BeginInit();
+            this.roundedPanel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            this.roundedPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            this.roundedPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // roundedPanel
-            // 
-            this.roundedPanel.BorderRadius = 20;
-            this.roundedPanel.ColorPanel = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(116)))), ((int)(((byte)(194)))));
-            this.roundedPanel.Controls.Add(this.label1);
-            this.roundedPanel.Controls.Add(this.lblTitle);
-            this.roundedPanel.Controls.Add(this.pictureBox1);
-            this.roundedPanel.Location = new System.Drawing.Point(199, 76);
-            this.roundedPanel.Name = "roundedPanel";
-            this.roundedPanel.Size = new System.Drawing.Size(208, 88);
-            this.roundedPanel.TabIndex = 0;
             // 
             // labelRole
             // 
@@ -95,112 +83,61 @@
             this.label2.TabIndex = 2;
             this.label2.Text = "Role :";
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("SF Pro Display", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(79, 41);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(28, 19);
-            this.label1.TabIndex = 9;
-            this.label1.Text = "{-}";
-            // 
-            // lblTitle
-            // 
-            this.lblTitle.AutoSize = true;
-            this.lblTitle.BackColor = System.Drawing.Color.Transparent;
-            this.lblTitle.Font = new System.Drawing.Font("SF Pro Display", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitle.ForeColor = System.Drawing.Color.White;
-            this.lblTitle.Location = new System.Drawing.Point(79, 20);
-            this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(113, 19);
-            this.lblTitle.TabIndex = 8;
-            this.lblTitle.Text = "Jumlah Kelas :";
-            // 
-            // roundedPanel1
-            // 
-            this.roundedPanel1.BorderRadius = 20;
-            this.roundedPanel1.ColorPanel = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(109)))), ((int)(((byte)(151)))));
-            this.roundedPanel1.Controls.Add(this.label3);
-            this.roundedPanel1.Controls.Add(this.label4);
-            this.roundedPanel1.Controls.Add(this.pictureBox2);
-            this.roundedPanel1.Location = new System.Drawing.Point(199, 191);
-            this.roundedPanel1.Name = "roundedPanel1";
-            this.roundedPanel1.Size = new System.Drawing.Size(208, 88);
-            this.roundedPanel1.TabIndex = 3;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.Font = new System.Drawing.Font("SF Pro Display", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(79, 42);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(28, 19);
-            this.label3.TabIndex = 9;
-            this.label3.Text = "{-}";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.BackColor = System.Drawing.Color.Transparent;
-            this.label4.Font = new System.Drawing.Font("SF Pro Display", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(79, 20);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(119, 19);
-            this.label4.TabIndex = 8;
-            this.label4.Text = "Jumlah Dosen :";
-            // 
-            // roundedPanel2
-            // 
-            this.roundedPanel2.BorderRadius = 20;
-            this.roundedPanel2.ColorPanel = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(99)))), ((int)(((byte)(94)))));
-            this.roundedPanel2.Controls.Add(this.label5);
-            this.roundedPanel2.Controls.Add(this.label6);
-            this.roundedPanel2.Controls.Add(this.pictureBox3);
-            this.roundedPanel2.Location = new System.Drawing.Point(199, 305);
-            this.roundedPanel2.Name = "roundedPanel2";
-            this.roundedPanel2.Size = new System.Drawing.Size(208, 88);
-            this.roundedPanel2.TabIndex = 4;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.BackColor = System.Drawing.Color.Transparent;
-            this.label5.Font = new System.Drawing.Font("SF Pro Display", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(79, 43);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(28, 19);
-            this.label5.TabIndex = 9;
-            this.label5.Text = "{-}";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.BackColor = System.Drawing.Color.Transparent;
-            this.label6.Font = new System.Drawing.Font("SF Pro Display", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.Color.White;
-            this.label6.Location = new System.Drawing.Point(79, 20);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(104, 19);
-            this.label6.TabIndex = 8;
-            this.label6.Text = "Jumlah Mhs :";
-            // 
             // roundedPanelEvent
             // 
             this.roundedPanelEvent.BorderRadius = 20;
             this.roundedPanelEvent.ColorPanel = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(71)))), ((int)(((byte)(86)))));
-            this.roundedPanelEvent.Controls.Add(this.panelMainEvent);
+            this.roundedPanelEvent.Controls.Add(this.panelEvents);
             this.roundedPanelEvent.Controls.Add(this.labelTitleEvent);
             this.roundedPanelEvent.Location = new System.Drawing.Point(446, 76);
             this.roundedPanelEvent.Name = "roundedPanelEvent";
             this.roundedPanelEvent.Size = new System.Drawing.Size(552, 317);
             this.roundedPanelEvent.TabIndex = 5;
+            // 
+            // panelEvents
+            // 
+            this.panelEvents.AutoScroll = true;
+            this.panelEvents.BackColor = System.Drawing.Color.Transparent;
+            this.panelEvents.Controls.Add(this.panelEvent);
+            this.panelEvents.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panelEvents.Location = new System.Drawing.Point(0, 49);
+            this.panelEvents.Name = "panelEvents";
+            this.panelEvents.Size = new System.Drawing.Size(552, 268);
+            this.panelEvents.TabIndex = 1;
+            // 
+            // panelEvent
+            // 
+            this.panelEvent.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(71)))), ((int)(((byte)(110)))));
+            this.panelEvent.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelEvent.Controls.Add(this.pictureBoxEvent);
+            this.panelEvent.Controls.Add(this.labelEvent);
+            this.panelEvent.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelEvent.Location = new System.Drawing.Point(0, 0);
+            this.panelEvent.Name = "panelEvent";
+            this.panelEvent.Size = new System.Drawing.Size(552, 70);
+            this.panelEvent.TabIndex = 1;
+            // 
+            // pictureBoxEvent
+            // 
+            this.pictureBoxEvent.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.pictureBoxEvent.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBoxEvent.Image = global::Mini_Attendance.Properties.Resources.icons8_roles_64;
+            this.pictureBoxEvent.Location = new System.Drawing.Point(21, 8);
+            this.pictureBoxEvent.Name = "pictureBoxEvent";
+            this.pictureBoxEvent.Size = new System.Drawing.Size(50, 50);
+            this.pictureBoxEvent.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxEvent.TabIndex = 9;
+            this.pictureBoxEvent.TabStop = false;
+            // 
+            // labelEvent
+            // 
+            this.labelEvent.Font = new System.Drawing.Font("SF Pro Display", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelEvent.ForeColor = System.Drawing.Color.White;
+            this.labelEvent.Location = new System.Drawing.Point(86, 8);
+            this.labelEvent.Name = "labelEvent";
+            this.labelEvent.Size = new System.Drawing.Size(374, 50);
+            this.labelEvent.TabIndex = 1;
+            this.labelEvent.Text = "Nama Event :\r\nTanggal Event :\r\nLokasi Event :";
             // 
             // labelTitleEvent
             // 
@@ -214,38 +151,41 @@
             this.labelTitleEvent.TabIndex = 0;
             this.labelTitleEvent.Text = "Event Yang Akan Datang :";
             // 
-            // panelMainEvent
+            // roundedPanel2
             // 
-            this.panelMainEvent.AutoScroll = true;
-            this.panelMainEvent.BackColor = System.Drawing.Color.Transparent;
-            this.panelMainEvent.Controls.Add(this.panelEvent);
-            this.panelMainEvent.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelMainEvent.Location = new System.Drawing.Point(0, 49);
-            this.panelMainEvent.Name = "panelMainEvent";
-            this.panelMainEvent.Size = new System.Drawing.Size(552, 268);
-            this.panelMainEvent.TabIndex = 1;
+            this.roundedPanel2.BorderRadius = 20;
+            this.roundedPanel2.ColorPanel = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(99)))), ((int)(((byte)(94)))));
+            this.roundedPanel2.Controls.Add(this.labelJM);
+            this.roundedPanel2.Controls.Add(this.label6);
+            this.roundedPanel2.Controls.Add(this.pictureBox3);
+            this.roundedPanel2.Location = new System.Drawing.Point(199, 305);
+            this.roundedPanel2.Name = "roundedPanel2";
+            this.roundedPanel2.Size = new System.Drawing.Size(208, 88);
+            this.roundedPanel2.TabIndex = 4;
             // 
-            // panelEvent
+            // labelJM
             // 
-            this.panelEvent.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(71)))), ((int)(((byte)(110)))));
-            this.panelEvent.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panelEvent.Controls.Add(this.pictureBoxEvent);
-            this.panelEvent.Controls.Add(this.label7);
-            this.panelEvent.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelEvent.Location = new System.Drawing.Point(0, 0);
-            this.panelEvent.Name = "panelEvent";
-            this.panelEvent.Size = new System.Drawing.Size(552, 68);
-            this.panelEvent.TabIndex = 1;
+            this.labelJM.AutoSize = true;
+            this.labelJM.BackColor = System.Drawing.Color.Transparent;
+            this.labelJM.Font = new System.Drawing.Font("SF Pro Display", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelJM.ForeColor = System.Drawing.Color.White;
+            this.labelJM.Location = new System.Drawing.Point(79, 43);
+            this.labelJM.Name = "labelJM";
+            this.labelJM.Size = new System.Drawing.Size(28, 19);
+            this.labelJM.TabIndex = 9;
+            this.labelJM.Text = "{-}";
             // 
-            // label7
+            // label6
             // 
-            this.label7.Font = new System.Drawing.Font("SF Pro Display", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.ForeColor = System.Drawing.Color.White;
-            this.label7.Location = new System.Drawing.Point(86, 7);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(374, 50);
-            this.label7.TabIndex = 1;
-            this.label7.Text = "Nama Event :\r\nTanggal Event :\r\nLokasi Event :";
+            this.label6.AutoSize = true;
+            this.label6.BackColor = System.Drawing.Color.Transparent;
+            this.label6.Font = new System.Drawing.Font("SF Pro Display", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.White;
+            this.label6.Location = new System.Drawing.Point(79, 20);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(104, 19);
+            this.label6.TabIndex = 8;
+            this.label6.Text = "Jumlah Mhs :";
             // 
             // pictureBox3
             // 
@@ -259,6 +199,42 @@
             this.pictureBox3.TabIndex = 7;
             this.pictureBox3.TabStop = false;
             // 
+            // roundedPanel1
+            // 
+            this.roundedPanel1.BorderRadius = 20;
+            this.roundedPanel1.ColorPanel = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(109)))), ((int)(((byte)(151)))));
+            this.roundedPanel1.Controls.Add(this.labelJD);
+            this.roundedPanel1.Controls.Add(this.label4);
+            this.roundedPanel1.Controls.Add(this.pictureBox2);
+            this.roundedPanel1.Location = new System.Drawing.Point(199, 191);
+            this.roundedPanel1.Name = "roundedPanel1";
+            this.roundedPanel1.Size = new System.Drawing.Size(208, 88);
+            this.roundedPanel1.TabIndex = 3;
+            // 
+            // labelJD
+            // 
+            this.labelJD.AutoSize = true;
+            this.labelJD.BackColor = System.Drawing.Color.Transparent;
+            this.labelJD.Font = new System.Drawing.Font("SF Pro Display", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelJD.ForeColor = System.Drawing.Color.White;
+            this.labelJD.Location = new System.Drawing.Point(79, 42);
+            this.labelJD.Name = "labelJD";
+            this.labelJD.Size = new System.Drawing.Size(28, 19);
+            this.labelJD.TabIndex = 9;
+            this.labelJD.Text = "{-}";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.Transparent;
+            this.label4.Font = new System.Drawing.Font("SF Pro Display", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.White;
+            this.label4.Location = new System.Drawing.Point(79, 20);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(119, 19);
+            this.label4.TabIndex = 8;
+            this.label4.Text = "Jumlah Dosen :";
+            // 
             // pictureBox2
             // 
             this.pictureBox2.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -271,6 +247,42 @@
             this.pictureBox2.TabIndex = 7;
             this.pictureBox2.TabStop = false;
             // 
+            // roundedPanel
+            // 
+            this.roundedPanel.BorderRadius = 20;
+            this.roundedPanel.ColorPanel = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(116)))), ((int)(((byte)(194)))));
+            this.roundedPanel.Controls.Add(this.labelJK);
+            this.roundedPanel.Controls.Add(this.lblTitle);
+            this.roundedPanel.Controls.Add(this.pictureBox1);
+            this.roundedPanel.Location = new System.Drawing.Point(199, 76);
+            this.roundedPanel.Name = "roundedPanel";
+            this.roundedPanel.Size = new System.Drawing.Size(208, 88);
+            this.roundedPanel.TabIndex = 0;
+            // 
+            // labelJK
+            // 
+            this.labelJK.AutoSize = true;
+            this.labelJK.BackColor = System.Drawing.Color.Transparent;
+            this.labelJK.Font = new System.Drawing.Font("SF Pro Display", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelJK.ForeColor = System.Drawing.Color.White;
+            this.labelJK.Location = new System.Drawing.Point(79, 41);
+            this.labelJK.Name = "labelJK";
+            this.labelJK.Size = new System.Drawing.Size(28, 19);
+            this.labelJK.TabIndex = 9;
+            this.labelJK.Text = "{-}";
+            // 
+            // lblTitle
+            // 
+            this.lblTitle.AutoSize = true;
+            this.lblTitle.BackColor = System.Drawing.Color.Transparent;
+            this.lblTitle.Font = new System.Drawing.Font("SF Pro Display", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitle.ForeColor = System.Drawing.Color.White;
+            this.lblTitle.Location = new System.Drawing.Point(79, 20);
+            this.lblTitle.Name = "lblTitle";
+            this.lblTitle.Size = new System.Drawing.Size(113, 19);
+            this.lblTitle.TabIndex = 8;
+            this.lblTitle.Text = "Jumlah Kelas :";
+            // 
             // pictureBox1
             // 
             this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -282,18 +294,6 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 7;
             this.pictureBox1.TabStop = false;
-            // 
-            // pictureBoxEvent
-            // 
-            this.pictureBoxEvent.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.pictureBoxEvent.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBoxEvent.Image = global::Mini_Attendance.Properties.Resources.icons8_roles_64;
-            this.pictureBoxEvent.Location = new System.Drawing.Point(21, 7);
-            this.pictureBoxEvent.Name = "pictureBoxEvent";
-            this.pictureBoxEvent.Size = new System.Drawing.Size(50, 50);
-            this.pictureBoxEvent.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBoxEvent.TabIndex = 9;
-            this.pictureBoxEvent.TabStop = false;
             // 
             // UserControlBeranda
             // 
@@ -309,20 +309,20 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "UserControlBeranda";
             this.Size = new System.Drawing.Size(1200, 450);
-            this.roundedPanel.ResumeLayout(false);
-            this.roundedPanel.PerformLayout();
-            this.roundedPanel1.ResumeLayout(false);
-            this.roundedPanel1.PerformLayout();
-            this.roundedPanel2.ResumeLayout(false);
-            this.roundedPanel2.PerformLayout();
             this.roundedPanelEvent.ResumeLayout(false);
             this.roundedPanelEvent.PerformLayout();
-            this.panelMainEvent.ResumeLayout(false);
+            this.panelEvents.ResumeLayout(false);
             this.panelEvent.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxEvent)).EndInit();
+            this.roundedPanel2.ResumeLayout(false);
+            this.roundedPanel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            this.roundedPanel1.ResumeLayout(false);
+            this.roundedPanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            this.roundedPanel.ResumeLayout(false);
+            this.roundedPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -334,21 +334,21 @@
         private System.Windows.Forms.Label labelRole;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label labelJK;
         private System.Windows.Forms.Label lblTitle;
         private RoundedPanel roundedPanel1;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label labelJD;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.PictureBox pictureBox2;
         private RoundedPanel roundedPanel2;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label labelJM;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.PictureBox pictureBox3;
         private RoundedPanel roundedPanelEvent;
-        private System.Windows.Forms.Panel panelMainEvent;
+        private System.Windows.Forms.Panel panelEvents;
         private System.Windows.Forms.Label labelTitleEvent;
         private System.Windows.Forms.Panel panelEvent;
-        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label labelEvent;
         private System.Windows.Forms.PictureBox pictureBoxEvent;
     }
 }

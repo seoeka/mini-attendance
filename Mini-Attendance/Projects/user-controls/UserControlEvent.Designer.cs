@@ -44,9 +44,9 @@
             this.btDel1 = new RoundedButton();
             this.btEdi1 = new RoundedButton();
             this.btAdd1 = new RoundedButton();
-            this.choosenEvent = new System.Windows.Forms.TextBox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
+            this.chooseEvent = new System.Windows.Forms.TextBox();
+            this.labelTitle = new System.Windows.Forms.Label();
+            this.labelDesc = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewKelas)).BeginInit();
             this.SuspendLayout();
             // 
@@ -84,6 +84,7 @@
             this.btAdd.TabIndex = 100;
             this.btAdd.Text = "Tambah";
             this.btAdd.UseVisualStyleBackColor = true;
+            this.btAdd.Click += new System.EventHandler(this.btAdd_Click);
             // 
             // label6
             // 
@@ -147,6 +148,7 @@
             this.dataGridViewKelas.ReadOnly = true;
             this.dataGridViewKelas.Size = new System.Drawing.Size(788, 423);
             this.dataGridViewKelas.TabIndex = 106;
+            this.dataGridViewKelas.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewKelas_CellDoubleClick);
             // 
             // btDel
             // 
@@ -161,6 +163,7 @@
             this.btDel.TabIndex = 105;
             this.btDel.Text = "Hapus";
             this.btDel.UseVisualStyleBackColor = true;
+            this.btDel.Click += new System.EventHandler(this.btDel_Click);
             // 
             // btEdi
             // 
@@ -175,6 +178,7 @@
             this.btEdi.TabIndex = 104;
             this.btEdi.Text = "Edit";
             this.btEdi.UseVisualStyleBackColor = true;
+            this.btEdi.Click += new System.EventHandler(this.btEdi_Click);
             // 
             // label2
             // 
@@ -238,46 +242,47 @@
             this.btAdd1.UseVisualStyleBackColor = true;
             this.btAdd1.Visible = false;
             // 
-            // choosenEvent
+            // chooseEvent
             // 
-            this.choosenEvent.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.choosenEvent.Enabled = false;
-            this.choosenEvent.Location = new System.Drawing.Point(40, 380);
-            this.choosenEvent.Name = "choosenEvent";
-            this.choosenEvent.Size = new System.Drawing.Size(309, 27);
-            this.choosenEvent.TabIndex = 110;
-            this.choosenEvent.Visible = false;
+            this.chooseEvent.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.chooseEvent.Enabled = false;
+            this.chooseEvent.Location = new System.Drawing.Point(40, 380);
+            this.chooseEvent.Name = "chooseEvent";
+            this.chooseEvent.Size = new System.Drawing.Size(309, 27);
+            this.chooseEvent.TabIndex = 110;
+            this.chooseEvent.Visible = false;
             // 
-            // label10
+            // labelTitle
             // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("SF Pro Display", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(75, 306);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(227, 19);
-            this.label10.TabIndex = 109;
-            this.label10.Text = "Tertarik Mengikuti Event Apa?";
-            this.label10.Visible = false;
+            this.labelTitle.AutoSize = true;
+            this.labelTitle.Font = new System.Drawing.Font("SF Pro Display", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelTitle.Location = new System.Drawing.Point(75, 306);
+            this.labelTitle.Name = "labelTitle";
+            this.labelTitle.Size = new System.Drawing.Size(227, 19);
+            this.labelTitle.TabIndex = 109;
+            this.labelTitle.Text = "Tertarik Mengikuti Event Apa?";
+            this.labelTitle.Visible = false;
             // 
-            // label4
+            // labelDesc
             // 
-            this.label4.Location = new System.Drawing.Point(43, 328);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(306, 46);
-            this.label4.TabIndex = 119;
-            this.label4.Text = "klik dua kali pada tabel di samping untuk memilih Event yang kamu sukai!";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.labelDesc.Location = new System.Drawing.Point(43, 328);
+            this.labelDesc.Name = "labelDesc";
+            this.labelDesc.Size = new System.Drawing.Size(306, 46);
+            this.labelDesc.TabIndex = 119;
+            this.labelDesc.Text = "klik dua kali pada tabel di samping untuk memilih Event yang kamu sukai!";
+            this.labelDesc.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.labelDesc.Visible = false;
             // 
             // UserControlEvent
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.label4);
+            this.Controls.Add(this.labelDesc);
             this.Controls.Add(this.btDel1);
             this.Controls.Add(this.btEdi1);
             this.Controls.Add(this.btAdd1);
-            this.Controls.Add(this.choosenEvent);
-            this.Controls.Add(this.label10);
+            this.Controls.Add(this.chooseEvent);
+            this.Controls.Add(this.labelTitle);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.textBoxLK);
             this.Controls.Add(this.dataGridViewKelas);
@@ -292,7 +297,7 @@
             this.Controls.Add(this.textBoxNM);
             this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("SF Pro Display", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "UserControlEvent";
             this.Size = new System.Drawing.Size(1200, 480);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewKelas)).EndInit();
@@ -319,8 +324,8 @@
         private RoundedButton btDel1;
         private RoundedButton btEdi1;
         private RoundedButton btAdd1;
-        private System.Windows.Forms.TextBox choosenEvent;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox chooseEvent;
+        private System.Windows.Forms.Label labelTitle;
+        private System.Windows.Forms.Label labelDesc;
     }
 }
