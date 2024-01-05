@@ -1,5 +1,5 @@
 # Mini-Attendance
-**Attendance Management System - Database Description**
+##**Attendance Management System - Database Description**
 
 The Attendance Management System is a comprehensive application designed to streamline and enhance the process of tracking attendance, managing students, classes, events, and administrative functions within an educational institution. The system utilizes a relational database named `db_attendance` to efficiently organize and store key information. Here's an overview of the application's components:
 
@@ -36,6 +36,7 @@ The Attendance Management System is a comprehensive application designed to stre
    - Demonstrates the application's functionality with two lecturers, two students, and an administrator account.
    - An administrator account with the username 'admin' and password '12345678' is created.
 
+## **User Interface**
 Admin
 ![image](https://github.com/seoeka/mini-attendance/assets/87307944/2856884d-0e10-4d80-8365-060cffdbc0cd)
 ![image](https://github.com/seoeka/mini-attendance/assets/87307944/1c8fac5e-16a7-4175-8a62-bb3c381acd44)
