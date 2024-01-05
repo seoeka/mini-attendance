@@ -69,9 +69,9 @@ namespace Mini_Attendance
                 {
                     connection.Open();
 
-                    using (SqlCommand command = new SqlCommand("SELECT * FROM mahasiswa WHERE nimMhs = @username AND password = @password " +
-                                            "OR EXISTS (SELECT * FROM dosen WHERE nipDosen = @username AND password = @password) " +
-                                            "OR EXISTS (SELECT * FROM administrator WHERE username = @username AND password = @password)", connection))
+                    using (SqlCommand command = new SqlCommand("SELECT * FROM Mahasiswa WHERE NIM = @username AND Password = @password " +
+                                            "OR EXISTS (SELECT * FROM Dosen WHERE NIP = @username AND Password = @password) " +
+                                            "OR EXISTS (SELECT * FROM Administrator WHERE Username = @username AND Password = @password)", connection))
                     {
                         command.Parameters.AddWithValue("@username", username);
                         command.Parameters.AddWithValue("@password", password);
@@ -136,7 +136,7 @@ namespace Mini_Attendance
             {
                 connection.Open();
 
-                using (SqlCommand command = new SqlCommand("SELECT * FROM mahasiswa WHERE nimMhs = @username", connection))
+                using (SqlCommand command = new SqlCommand("SELECT * FROM Mahasiswa WHERE NIM = @username", connection))
                 {
                     command.Parameters.AddWithValue("@username", inputUsername);
 
@@ -149,7 +149,7 @@ namespace Mini_Attendance
                     }
                 }
 
-                using (SqlCommand command = new SqlCommand("SELECT * FROM dosen WHERE nipDosen = @username", connection))
+                using (SqlCommand command = new SqlCommand("SELECT * FROM Dosen WHERE NIP = @username", connection))
                 {
                     command.Parameters.AddWithValue("@username", inputUsername);
 
@@ -162,7 +162,7 @@ namespace Mini_Attendance
                     }
                 }
 
-                using (SqlCommand command = new SqlCommand("SELECT * FROM administrator WHERE username = @username", connection))
+                using (SqlCommand command = new SqlCommand("SELECT * FROM Administrator WHERE Username = @username", connection))
                 {
                     command.Parameters.AddWithValue("@username", inputUsername);
 

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -36,18 +37,32 @@ namespace Mini_Attendance
             }
         }
 
+        public static DataTable ExecuteQuery(string query, params SqlParameter[] parameters)
+        {
+            using (SqlCommand command = new SqlCommand(query, GetConnection()))
+            {
+                command.Parameters.AddRange(parameters);
+
+                using (SqlDataAdapter adapter = new SqlDataAdapter(command))
+                {
+                    DataTable dataTable = new DataTable();
+                    adapter.Fill(dataTable);
+                    return dataTable;
+                }
+            }
+        }
+
         public static void ExecuteNonQuery(string query, params object[] parameters)
         {
             using (SqlCommand command = new SqlCommand(query, connection))
             {
-                for (int i = 0; i < parameters.Length; i += 2)
+                for (int i = 1; i < parameters.Length; i += 2)
                 {
-                    command.Parameters.AddWithValue(parameters[i].ToString(), parameters[i + 1]);
+                    command.Parameters.Add(parameters[i - 1].ToString(), SqlDbType.NVarChar).Value = parameters[i];
                 }
 
                 command.ExecuteNonQuery();
             }
         }
-
     }
 }

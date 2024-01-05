@@ -8,14 +8,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static Mini_Attendance.form.main;
 
 namespace Mini_Attendance.Projects.user_controls
 {
-    public partial class UserControlDo : UserControl
+    public partial class UserControlDo : UserControl, IUserControlClearAndDisable
     {
         private SqlConnection connection;
-        private int selectedDosenID; // Menyimpan ID dari baris yang dipilih
-        private bool isEditing = false; // Menandai apakah sedang dalam mode edit
+        private int selectedDosenID;
+        private bool isEditing = false;
 
         public UserControlDo()
         {
@@ -23,47 +24,30 @@ namespace Mini_Attendance.Projects.user_controls
             connection = DatabaseManager.GetConnection();
 
             DisplayDataDosen();
+            ClearAndDisable();
+        }
 
+        public void ClearAndDisable()
+        {
+            TextBoxHelper.ClearTextBoxes(textBoxNM, textBoxNI, textBoxEM, textBoxPW,
+                                         textBoxNM1, textBoxNI1, textBoxEM1, textBoxPW1);
             TextBoxHelper.EnableTextBoxes(false, textBoxNM1, textBoxNI1, textBoxEM1, textBoxPW1);
             btEdi.Enabled = false;
             btDel.Enabled = false;
-
-            textBoxNM1.Leave += TextBoxEdit_Leave;
-            textBoxNI1.Leave += TextBoxEdit_Leave;
-            textBoxEM1.Leave += TextBoxEdit_Leave;
-            textBoxPW1.Leave += TextBoxEdit_Leave;
         }
 
         private void UserControlDo_Leave(object sender, EventArgs e)
         {
             if (!isEditing)
             {
-                TextBoxHelper.ClearTextBoxes(textBoxNM, textBoxNI, textBoxEM, textBoxPW,
-                                     textBoxNM1, textBoxNI1, textBoxEM1, textBoxPW1);
+                ClearAndDisable();
             }
         }
 
-
         private void DisplayDataDosen()
         {
-            string query = "SELECT * FROM dosen";
-
-            using (SqlCommand command = new SqlCommand(query, connection))
-            {
-                using (SqlDataAdapter adapter = new SqlDataAdapter(command))
-                {
-                    DataTable dataTable = new DataTable();
-                    adapter.Fill(dataTable);
-
-                    dataTable.Columns["dosenID"].ColumnName = "ID";
-                    dataTable.Columns["namaDosen"].ColumnName = "Nama";
-                    dataTable.Columns["nipDosen"].ColumnName = "NIP";
-                    dataTable.Columns["emailDosen"].ColumnName = "Email";
-                    dataTable.Columns["password"].ColumnName = "Password";
-
-                    dataGridViewDosen.DataSource = dataTable;
-                }
-            }
+            string query = "SELECT * FROM Dosen";
+            dataGridViewDosen.DataSource = DatabaseManager.ExecuteQuery(query).DefaultView;
         }
 
         private void btAdd_Click(object sender, EventArgs e)
@@ -82,8 +66,9 @@ namespace Mini_Attendance.Projects.user_controls
                     return;
                 }
 
-                string query = "INSERT INTO dosen (namaDosen, nipDosen, emailDosen, password) VALUES (@Nama, @NIP, @Email, @Password)";
+                string query = "INSERT INTO Dosen (Nama, NIP, Email, Password) VALUES (@Nama, @NIP, @Email, @Password)";
                 DatabaseManager.ExecuteNonQuery(query, "@Nama", namaDosen, "@NIP", nipDosen, "@Email", emailDosen, "@Password", passwordDosen);
+                ClearAndDisable();
                 MessageBox.Show("Data berhasil ditambahkan.");
                 DisplayDataDosen();
             }
@@ -99,7 +84,7 @@ namespace Mini_Attendance.Projects.user_controls
             {
                 DataGridViewRow selectedRow = dataGridViewDosen.Rows[e.RowIndex];
 
-                selectedDosenID = Convert.ToInt32(selectedRow.Cells["ID"].Value); // Pastikan nama kolom ID disesuaikan
+                selectedDosenID = Convert.ToInt32(selectedRow.Cells["ID"].Value);
 
                 TextBoxHelper.FillTextBoxes(selectedRow, textBoxNM1, textBoxNI1, textBoxEM1, textBoxPW1);
                 TextBoxHelper.EnableTextBoxes(true, textBoxNM1, textBoxNI1, textBoxEM1, textBoxPW1);
@@ -118,27 +103,18 @@ namespace Mini_Attendance.Projects.user_controls
                 string emailDosen = textBoxEM1.Text;
                 string passwordDosen = textBoxPW1.Text;
 
-                string query = "UPDATE dosen SET namaDosen = @Nama, nipDosen = @NIP, emailDosen = @Email, password = @Password WHERE dosenID = @ID";
+                string query = "UPDATE Dosen SET Nama = @Nama, NIP = @NIP, Email = @Email, Password = @Password WHERE ID = @ID";
 
                 DatabaseManager.ExecuteNonQuery(query, "@ID", selectedDosenID, "@Nama", namaDosen, "@NIP", nipDosen, "@Email", emailDosen, "@Password", passwordDosen);
 
                 MessageBox.Show("Data berhasil diupdate.");
                 DisplayDataDosen();
-
-                TextBoxHelper.ClearTextBoxes(textBoxNM1, textBoxNI1, textBoxEM1, textBoxPW1);
-                TextBoxHelper.EnableTextBoxes(false, textBoxNM1, textBoxNI1, textBoxEM1, textBoxPW1);
-                btEdi.Enabled = false;
-                btDel.Enabled = false;
+                ClearAndDisable();
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error: " + ex.Message);
             }
-        }
-
-        private void TextBoxEdit_Leave(object sender, EventArgs e)
-        {
-            isEditing = false;
         }
 
         private void btDel_Click(object sender, EventArgs e)
@@ -147,12 +123,11 @@ namespace Mini_Attendance.Projects.user_controls
             {
                 if (selectedDosenID != 0)
                 {
-                    // Minta konfirmasi dari pengguna
                     DialogResult result = MessageBox.Show("Apakah Anda yakin ingin menghapus data ini?", "Konfirmasi Hapus", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
                     if (result == DialogResult.Yes)
                     {
-                        string query = "DELETE FROM dosen WHERE dosenID = @ID";
+                        string query = "DELETE FROM Dosen WHERE ID = @ID";
 
                         using (SqlCommand command = new SqlCommand(query, connection))
                         {
@@ -164,10 +139,7 @@ namespace Mini_Attendance.Projects.user_controls
                             {
                                 MessageBox.Show("Data berhasil dihapus.");
                                 DisplayDataDosen();
-                                TextBoxHelper.ClearTextBoxes(textBoxNM1, textBoxNI1, textBoxEM1, textBoxPW1);
-                                TextBoxHelper.EnableTextBoxes(false, textBoxNM1, textBoxNI1, textBoxEM1, textBoxPW1);
-                                btEdi.Enabled = false;
-                                btDel.Enabled = false;
+                                ClearAndDisable();
                             }
                             else
                             {
@@ -186,6 +158,5 @@ namespace Mini_Attendance.Projects.user_controls
                 MessageBox.Show("Error: " + ex.Message);
             }
         }
-
     }
 }

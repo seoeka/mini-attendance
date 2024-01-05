@@ -24,7 +24,7 @@ public static class TextBoxHelper
         {
             if (i < row.Cells.Count)
             {
-                textBoxes[i].Text = row.Cells[i].Value.ToString();
+                textBoxes[i].Text = row.Cells[i + 1].Value.ToString();
             }
         }
     }

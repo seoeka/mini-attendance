@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Mini_Attendance.form
 {
@@ -44,6 +45,21 @@ namespace Mini_Attendance.form
             connection = DatabaseManager.GetConnection();
         }
 
+        private void HideAndClearUserControl(UserControl userControl)
+        {
+            userControl.Visible = false;
+
+            if (userControl is IUserControlClearAndDisable clearAndDisableControl)
+            {
+                clearAndDisableControl.ClearAndDisable();
+            }
+        }
+
+        public interface IUserControlClearAndDisable
+        {
+            void ClearAndDisable();
+        }
+
         private void UpdateRoleLabel()
         {
             if (userRole == "Mahasiswa")
@@ -62,7 +78,7 @@ namespace Mini_Attendance.form
 
         private string GetMahasiswaName(string username)
         {
-            using (SqlCommand command = new SqlCommand("SELECT namaMhs FROM mahasiswa WHERE nimMhs = @username", connection))
+            using (SqlCommand command = new SqlCommand("SELECT Nama FROM Mahasiswa WHERE NIM = @username", connection))
             {
                 command.Parameters.AddWithValue("@username", username);
 
@@ -70,7 +86,7 @@ namespace Mini_Attendance.form
                 {
                     if (reader.Read())
                     {
-                        return reader["namaMhs"].ToString();
+                        return reader["Nama"].ToString();
                     }
                 }
             }   
@@ -79,7 +95,7 @@ namespace Mini_Attendance.form
 
         private string GetDosenName(string username)
         {
-            using (SqlCommand command = new SqlCommand("SELECT namaDosen FROM dosen WHERE nipDosen = @username", connection))
+            using (SqlCommand command = new SqlCommand("SELECT Nama FROM Dosen WHERE NIP = @username", connection))
             {
                 command.Parameters.AddWithValue("@username", username);
 
@@ -87,7 +103,7 @@ namespace Mini_Attendance.form
                 {
                     if (reader.Read())
                     {
-                        return reader["namaDosen"].ToString();
+                        return reader["Nama"].ToString();
                     }
                 }
             }
@@ -107,8 +123,6 @@ namespace Mini_Attendance.form
         private void buttonKeluar_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show("Apakah Anda yakin ingin keluar?", "Konfirmasi Keluar", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-            // Memeriksa hasil pilihan pengguna
             if (result == DialogResult.Yes)
             {
                 this.Close();
@@ -120,8 +134,9 @@ namespace Mini_Attendance.form
         {
             ucActive(buttonBeranda);
             userControlBeranda1.Visible = true;
-            userControlDo1.Visible = false;
-            userControlMahasiswa1.Visible = false;
+            HideAndClearUserControl(userControlDo1);
+            HideAndClearUserControl(userControlMahasiswa1);
+            HideAndClearUserControl(userControlKelas1);
         }
 
         private void buttonDosen_Click(object sender, EventArgs e)
@@ -129,47 +144,53 @@ namespace Mini_Attendance.form
             ucActive(buttonDosen);
             userControlBeranda1.Visible = false;
             userControlDo1.Visible = true;
-            userControlMahasiswa1.Visible = false;
+            HideAndClearUserControl(userControlMahasiswa1);
+            HideAndClearUserControl(userControlKelas1);
         }
 
         private void buttonMhs_Click(object sender, EventArgs e)
         {
             ucActive(buttonMhs);
             userControlBeranda1.Visible = false;
-            userControlDo1.Visible = false;
+            HideAndClearUserControl(userControlDo1);
             userControlMahasiswa1.Visible = true;
+            HideAndClearUserControl(userControlKelas1);
         }
 
         private void buttonKelas_Click(object sender, EventArgs e)
         {
             ucActive(buttonKelas);
             userControlBeranda1.Visible = false;
-            userControlDo1.Visible = false;
-            userControlMahasiswa1.Visible = false;
+            HideAndClearUserControl(userControlDo1);
+            HideAndClearUserControl(userControlMahasiswa1);
+            userControlKelas1.Visible = true;
         }
 
         private void buttonHadir_Click(object sender, EventArgs e)
         {
             ucActive(buttonHadir);
             userControlBeranda1.Visible = false;
-            userControlDo1.Visible = false;
-            userControlMahasiswa1.Visible = false;
+            HideAndClearUserControl(userControlDo1);
+            HideAndClearUserControl(userControlMahasiswa1);
+            HideAndClearUserControl(userControlKelas1);
         }
 
         private void buttonAcara_Click(object sender, EventArgs e)
         {
             ucActive(buttonAcara);
             userControlBeranda1.Visible = false;
-            userControlDo1.Visible = false;
-            userControlMahasiswa1.Visible = false;
+            HideAndClearUserControl(userControlDo1);
+            HideAndClearUserControl(userControlMahasiswa1);
+            HideAndClearUserControl(userControlKelas1);
         }
 
         private void buttonLapor_Click(object sender, EventArgs e)
         {
             ucActive(buttonLapor);
             userControlBeranda1.Visible = false;
-            userControlDo1.Visible = false;
-            userControlMahasiswa1.Visible = false;
+            HideAndClearUserControl(userControlDo1);
+            HideAndClearUserControl(userControlMahasiswa1);
+            HideAndClearUserControl(userControlKelas1);
         }
 
         private void pictureBoxMin_MouseHover(object sender, EventArgs e)

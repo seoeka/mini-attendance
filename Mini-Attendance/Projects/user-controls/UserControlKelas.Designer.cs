@@ -1,6 +1,6 @@
 ﻿namespace Mini_Attendance.Projects.user_controls
 {
-    partial class UserControlMahasiswa
+    partial class UserControlKelas
     {
         /// <summary> 
         /// Required designer variable.
@@ -28,7 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dataGridViewMhs = new System.Windows.Forms.DataGridView();
+            this.dataGridViewDosen = new System.Windows.Forms.DataGridView();
+            this.btDel = new RoundedButton();
+            this.btEdi = new RoundedButton();
             this.label7 = new System.Windows.Forms.Label();
             this.textBoxPW1 = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
@@ -37,6 +39,7 @@
             this.textBoxNI1 = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.textBoxNM1 = new System.Windows.Forms.TextBox();
+            this.btAdd = new RoundedButton();
             this.label6 = new System.Windows.Forms.Label();
             this.textBoxPW = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -47,37 +50,61 @@
             this.textBoxNM = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.btDel = new RoundedButton();
-            this.btEdi = new RoundedButton();
-            this.btAdd = new RoundedButton();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMhs)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewDosen)).BeginInit();
             this.SuspendLayout();
             // 
-            // dataGridViewMhs
+            // dataGridViewDosen
             // 
-            this.dataGridViewMhs.AllowUserToAddRows = false;
-            this.dataGridViewMhs.AllowUserToDeleteRows = false;
-            this.dataGridViewMhs.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.dataGridViewDosen.AllowUserToAddRows = false;
+            this.dataGridViewDosen.AllowUserToDeleteRows = false;
+            this.dataGridViewDosen.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridViewMhs.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridViewMhs.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
-            this.dataGridViewMhs.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dataGridViewMhs.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewMhs.Location = new System.Drawing.Point(390, 36);
-            this.dataGridViewMhs.Name = "dataGridViewMhs";
-            this.dataGridViewMhs.ReadOnly = true;
-            this.dataGridViewMhs.Size = new System.Drawing.Size(759, 408);
-            this.dataGridViewMhs.TabIndex = 88;
-            this.dataGridViewMhs.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewMhs_CellDoubleClick);
+            this.dataGridViewDosen.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridViewDosen.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
+            this.dataGridViewDosen.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dataGridViewDosen.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewDosen.Location = new System.Drawing.Point(390, 36);
+            this.dataGridViewDosen.Name = "dataGridViewDosen";
+            this.dataGridViewDosen.ReadOnly = true;
+            this.dataGridViewDosen.Size = new System.Drawing.Size(759, 408);
+            this.dataGridViewDosen.TabIndex = 88;
+            // 
+            // btDel
+            // 
+            this.btDel.BorderRadius = 10;
+            this.btDel.ButtonColor = System.Drawing.Color.Firebrick;
+            this.btDel.Font = new System.Drawing.Font("SF Pro Display", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btDel.ForeColor = System.Drawing.Color.White;
+            this.btDel.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.btDel.Location = new System.Drawing.Point(266, 411);
+            this.btDel.Name = "btDel";
+            this.btDel.Size = new System.Drawing.Size(100, 33);
+            this.btDel.TabIndex = 87;
+            this.btDel.Text = "Hapus";
+            this.btDel.UseVisualStyleBackColor = true;
+            // 
+            // btEdi
+            // 
+            this.btEdi.BorderRadius = 10;
+            this.btEdi.ButtonColor = System.Drawing.Color.MediumSeaGreen;
+            this.btEdi.Font = new System.Drawing.Font("SF Pro Display", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btEdi.ForeColor = System.Drawing.Color.White;
+            this.btEdi.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(161)))), ((int)(((byte)(101)))));
+            this.btEdi.Location = new System.Drawing.Point(160, 411);
+            this.btEdi.Name = "btEdi";
+            this.btEdi.Size = new System.Drawing.Size(100, 33);
+            this.btEdi.TabIndex = 86;
+            this.btEdi.Text = "Edit";
+            this.btEdi.UseVisualStyleBackColor = true;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(51, 373);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(79, 19);
+            this.label7.Size = new System.Drawing.Size(58, 19);
             this.label7.TabIndex = 85;
-            this.label7.Text = "Password :";
+            this.label7.Text = "Dosen :";
             this.label7.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // textBoxPW1
@@ -92,9 +119,9 @@
             this.label8.AutoSize = true;
             this.label8.Location = new System.Drawing.Point(51, 343);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(52, 19);
+            this.label8.Size = new System.Drawing.Size(73, 19);
             this.label8.TabIndex = 83;
-            this.label8.Text = "Email :";
+            this.label8.Text = "Tgl Akhir :";
             this.label8.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // textBoxEM1
@@ -109,9 +136,9 @@
             this.label9.AutoSize = true;
             this.label9.Location = new System.Drawing.Point(51, 312);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(44, 19);
+            this.label9.Size = new System.Drawing.Size(73, 19);
             this.label9.TabIndex = 81;
-            this.label9.Text = "NIM :";
+            this.label9.Text = "Tgl Mulai :";
             this.label9.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // textBoxNI1
@@ -138,14 +165,28 @@
             this.textBoxNM1.Size = new System.Drawing.Size(229, 27);
             this.textBoxNM1.TabIndex = 78;
             // 
+            // btAdd
+            // 
+            this.btAdd.BorderRadius = 10;
+            this.btAdd.ButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(154)))), ((int)(((byte)(240)))));
+            this.btAdd.Font = new System.Drawing.Font("SF Pro Display", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btAdd.ForeColor = System.Drawing.Color.White;
+            this.btAdd.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(131)))), ((int)(((byte)(227)))));
+            this.btAdd.Location = new System.Drawing.Point(266, 198);
+            this.btAdd.Name = "btAdd";
+            this.btAdd.Size = new System.Drawing.Size(100, 33);
+            this.btAdd.TabIndex = 77;
+            this.btAdd.Text = "Tambah";
+            this.btAdd.UseVisualStyleBackColor = true;
+            // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(51, 161);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(79, 19);
+            this.label6.Size = new System.Drawing.Size(58, 19);
             this.label6.TabIndex = 76;
-            this.label6.Text = "Password :";
+            this.label6.Text = "Dosen :";
             this.label6.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // textBoxPW
@@ -160,9 +201,9 @@
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(51, 131);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(52, 19);
+            this.label5.Size = new System.Drawing.Size(73, 19);
             this.label5.TabIndex = 74;
-            this.label5.Text = "Email :";
+            this.label5.Text = "Tgl Akhir :";
             this.label5.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // textBoxEM
@@ -177,9 +218,9 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(51, 101);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(44, 19);
+            this.label4.Size = new System.Drawing.Size(73, 19);
             this.label4.TabIndex = 72;
-            this.label4.Text = "NIM :";
+            this.label4.Text = "Tgl Mulai :";
             this.label4.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // textBoxNI
@@ -212,9 +253,9 @@
             this.label2.Font = new System.Drawing.Font("SF Pro Display", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(51, 249);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(205, 19);
+            this.label2.Size = new System.Drawing.Size(162, 19);
             this.label2.TabIndex = 68;
-            this.label2.Text = "Edit dan Hapus Mahasiswa";
+            this.label2.Text = "Edit dan Hapus Kelas";
             // 
             // label1
             // 
@@ -222,60 +263,15 @@
             this.label1.Font = new System.Drawing.Font("SF Pro Display", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(51, 36);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(154, 19);
+            this.label1.Size = new System.Drawing.Size(111, 19);
             this.label1.TabIndex = 67;
-            this.label1.Text = "Tambah Mahasiswa";
+            this.label1.Text = "Tambah Kelas";
             // 
-            // btDel
-            // 
-            this.btDel.BorderRadius = 10;
-            this.btDel.ButtonColor = System.Drawing.Color.Firebrick;
-            this.btDel.Font = new System.Drawing.Font("SF Pro Display", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btDel.ForeColor = System.Drawing.Color.White;
-            this.btDel.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
-            this.btDel.Location = new System.Drawing.Point(266, 411);
-            this.btDel.Name = "btDel";
-            this.btDel.Size = new System.Drawing.Size(100, 33);
-            this.btDel.TabIndex = 87;
-            this.btDel.Text = "Hapus";
-            this.btDel.UseVisualStyleBackColor = true;
-            this.btDel.Click += new System.EventHandler(this.btDel_Click);
-            // 
-            // btEdi
-            // 
-            this.btEdi.BorderRadius = 10;
-            this.btEdi.ButtonColor = System.Drawing.Color.MediumSeaGreen;
-            this.btEdi.Font = new System.Drawing.Font("SF Pro Display", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btEdi.ForeColor = System.Drawing.Color.White;
-            this.btEdi.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(161)))), ((int)(((byte)(101)))));
-            this.btEdi.Location = new System.Drawing.Point(160, 411);
-            this.btEdi.Name = "btEdi";
-            this.btEdi.Size = new System.Drawing.Size(100, 33);
-            this.btEdi.TabIndex = 86;
-            this.btEdi.Text = "Edit";
-            this.btEdi.UseVisualStyleBackColor = true;
-            this.btEdi.Click += new System.EventHandler(this.btEdi_Click);
-            // 
-            // btAdd
-            // 
-            this.btAdd.BorderRadius = 10;
-            this.btAdd.ButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(154)))), ((int)(((byte)(240)))));
-            this.btAdd.Font = new System.Drawing.Font("SF Pro Display", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btAdd.ForeColor = System.Drawing.Color.White;
-            this.btAdd.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(131)))), ((int)(((byte)(227)))));
-            this.btAdd.Location = new System.Drawing.Point(266, 198);
-            this.btAdd.Name = "btAdd";
-            this.btAdd.Size = new System.Drawing.Size(100, 33);
-            this.btAdd.TabIndex = 77;
-            this.btAdd.Text = "Tambah";
-            this.btAdd.UseVisualStyleBackColor = true;
-            this.btAdd.Click += new System.EventHandler(this.btAdd_Click);
-            // 
-            // UserControlMahasiswa
+            // UserControlKelas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.dataGridViewMhs);
+            this.Controls.Add(this.dataGridViewDosen);
             this.Controls.Add(this.btDel);
             this.Controls.Add(this.btEdi);
             this.Controls.Add(this.label7);
@@ -299,10 +295,9 @@
             this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("SF Pro Display", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.Name = "UserControlMahasiswa";
+            this.Name = "UserControlKelas";
             this.Size = new System.Drawing.Size(1200, 480);
-            this.Leave += new System.EventHandler(this.UserControlMahasiswa_Leave);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMhs)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewDosen)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -310,7 +305,7 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dataGridViewMhs;
+        private System.Windows.Forms.DataGridView dataGridViewDosen;
         private RoundedButton btDel;
         private RoundedButton btEdi;
         private System.Windows.Forms.Label label7;

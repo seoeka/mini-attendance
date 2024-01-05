@@ -4,100 +4,89 @@ CREATE DATABASE db_attendance;
 USE db_attendance;
 
 -- Membuat Tabel Mahasiswa
-CREATE TABLE mahasiswa (
-  mhsID INT,
-  namaMhs VARCHAR(100),
-  nimMhs VARCHAR(30) UNIQUE,
-  emailMhs VARCHAR(55) UNIQUE,
-  password VARCHAR(20),
-  CONSTRAINT PK_mahasiswa PRIMARY KEY (mhsID)
+CREATE TABLE Mahasiswa (
+  ID INT IDENTITY(1,1) NOT NULL,
+  Nama VARCHAR(100) NOT NULL,
+  NIM VARCHAR(30) UNIQUE,
+  Email VARCHAR(55) UNIQUE,
+  Password VARCHAR(20) NOT NULL,
+  CONSTRAINT PK_Mahasiswa PRIMARY KEY (ID)
 );
 
 -- Membuat Tabel Event
-CREATE TABLE event (
-  eventID INT,
-  namaEvent VARCHAR(100),
-  lokasiEvent VARCHAR(100),
-  tglEvent DATE,
-  CONSTRAINT PK_event PRIMARY KEY (eventID)
+CREATE TABLE Event (
+  ID INT IDENTITY(1,1) NOT NULL,
+  Nama VARCHAR(100) NOT NULL,
+  Lokasi VARCHAR(100) NOT NULL,
+  Tanggal DATE NOT NULL,
+  Peserta VARCHAR(20) NOT NULL,
+  Gambar VARCHAR(100) NOT NULL,
+  CONSTRAINT PK_Event PRIMARY KEY (ID)
 );
 
 -- Membuat Tabel Administrator
-CREATE TABLE administrator (
-  adminID INT,
-  username VARCHAR(55) UNIQUE,
-  password VARCHAR(20),
-  CONSTRAINT PK_administrator PRIMARY KEY (adminID)
+CREATE TABLE Administrator (
+  ID INT IDENTITY(1,1) NOT NULL,
+  Username VARCHAR(55) UNIQUE NOT NULL,
+  Password VARCHAR(20) NOT NULL,
+  CONSTRAINT PK_Administrator PRIMARY KEY (ID)
 );
 
 -- Membuat Tabel Dosen
-CREATE TABLE dosen (
-  dosenID INT IDENTITY(1,1),
-  namaDosen VARCHAR(100),
-  nipDosen VARCHAR(30) UNIQUE,
-  emailDosen VARCHAR(55) UNIQUE,
-  password VARCHAR(20),
-  CONSTRAINT PK_dosen PRIMARY KEY (dosenID)
+CREATE TABLE Dosen (
+  ID INT IDENTITY(1,1) NOT NULL,
+  Nama VARCHAR(100) NOT NULL,
+  NIP VARCHAR(30) UNIQUE,
+  Email VARCHAR(55) UNIQUE,
+  Password VARCHAR(20) NOT NULL,
+  CONSTRAINT PK_Dosen PRIMARY KEY (ID)
 );
 
 -- Membuat Tabel Kelas
 CREATE TABLE kelas (
-  kelasID INT,
-  namaKelas VARCHAR(100),
-  tglKelas DATE,
-  dosenID INT,
-  CONSTRAINT PK_kelas PRIMARY KEY (kelasID),
-  CONSTRAINT FK_kelas_dosen FOREIGN KEY (dosenID) REFERENCES dosen(dosenID)
+  ID INT IDENTITY (1,1) NOT NULL,
+  Nama VARCHAR(100) NOT NULL,
+  Tanggal DATE NOT NULL,
+  dosenID INT NOT NULL,
+  CONSTRAINT PK_Kelas PRIMARY KEY (ID),
+  CONSTRAINT FK_Kelas_Dosen FOREIGN KEY (dosenID) REFERENCES Dosen(ID)
 );
 
 -- Membuat Tabel Kehadiran
-CREATE TABLE kehadiran (
-  kehadiranID INT,
+CREATE TABLE Kehadiran (
+  ID INT IDENTITY (1,1),
   mhsID INT,
   kelasID INT,
-  tglKehadiran DATE,
+  Tanggal DATE,
   status VARCHAR(20),
-  CONSTRAINT PK_kehadiran PRIMARY KEY (kehadiranID),
-  CONSTRAINT FK_kehadiran_mahasiswa FOREIGN KEY (mhsID) REFERENCES mahasiswa(mhsID),
-  CONSTRAINT FK_kehadiran_kelas FOREIGN KEY (kelasID) REFERENCES kelas(kelasID)
+  CONSTRAINT PK_Kehadiran PRIMARY KEY (ID),
+  CONSTRAINT FK_Kehadiran_Mahasiswa FOREIGN KEY (mhsID) REFERENCES Mahasiswa(ID),
+  CONSTRAINT FK_Kehadiran_Kelas FOREIGN KEY (kelasID) REFERENCES Kelas(ID)
+);
+
+CREATE TABLE Event_Attendance (
+  eventID INT,
+  mhsID INT,
+  dosenID INT,
+  CONSTRAINT PK_Event_Attendance PRIMARY KEY (eventID, mhsID, dosenID),
+  CONSTRAINT FK_Event_Attendance_Event FOREIGN KEY (eventID) REFERENCES Event(ID),
+  CONSTRAINT FK_Event_Attendance_Mahasiswa FOREIGN KEY (mhsID) REFERENCES Mahasiswa(ID),
+  CONSTRAINT FK_Event_Attendance_Dosen FOREIGN KEY (dosenID) REFERENCES Dosen(ID)
 );
 
 -- Menambahkan data Dosen
-INSERT INTO dosen (dosenID, namaDosen, nipDosen, emailDosen, password)
+INSERT INTO Dosen (Nama, NIP, Email, Password)
 VALUES
-  (1, 'Dr. Budi Santoso', 'NIP123', 'dosen1@example.com', '123456'),
-  (2, 'Prof. Dewi Arifah', 'NIP456', 'dosen2@example.com', '123456');
+  ('Dr. Budi Santoso', 'NIP123', 'dosen1@example.com', '123456'),
+  ('Prof. Dewi Arifah', 'NIP456', 'dosen2@example.com', '123456');
 
 -- Menambahkan data Mahasiswa
-INSERT INTO mahasiswa (mhsID, namaMhs, nimMhs, emailMhs, password)
+INSERT INTO Mahasiswa (Nama, NIM, Email, Password)
 VALUES
-  (1, 'Ekasari Amalia', 'NIM123', 'mahasiswa1@example.com', '123456'),
-  (2, 'Muhammad Raafi', 'NIM456', 'mahasiswa2@example.com', '123456');
+  ('Ekasari Amalia', 'NIM123', 'mahasiswa1@example.com', '123456'),
+  ('Muhammad Raafi', 'NIM456', 'mahasiswa2@example.com', '123456');
 
 -- Menambahkan data Administrator
-INSERT INTO administrator (adminID, username, password)
+INSERT INTO Administrator (Username, Password)
 VALUES
-  (1, 'admin', '12345678');
-
-ALTER TABLE kelas
-DROP CONSTRAINT FK_kelas_dosen;
-
--- Drop PRIMARY KEY constraint
-ALTER TABLE dosen
-DROP CONSTRAINT PK_dosen;
-
--- Hapus kolom dosenID yang lama
-ALTER TABLE dosen
-DROP COLUMN dosenID;
-
--- Tambahkan kembali kolom dosenID dengan definisi baru
-ALTER TABLE dosen
-ADD dosenID INT IDENTITY(1,1) PRIMARY KEY;
-
--- Tambahkan PRIMARY KEY constraint kembali
-ALTER TABLE dosen
-ADD CONSTRAINT PK_dosen PRIMARY KEY (dosenID);
-
--- Tambahkan FOREIGN KEY constraint kembali
-ALTER TABLE kelas
-ADD CONSTRAINT FK_kelas_dosen FOREIGN KEY (dosenID) REFERENCES dosen(dosenID);
+  ('admin', '12345678');
