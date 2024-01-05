@@ -28,46 +28,47 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dataGridViewDosen = new System.Windows.Forms.DataGridView();
+            this.dataGridViewKelas = new System.Windows.Forms.DataGridView();
             this.btDel = new RoundedButton();
             this.btEdi = new RoundedButton();
-            this.label7 = new System.Windows.Forms.Label();
-            this.textBoxPW1 = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.textBoxEM1 = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.textBoxNI1 = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.textBoxNM1 = new System.Windows.Forms.TextBox();
             this.btAdd = new RoundedButton();
             this.label6 = new System.Windows.Forms.Label();
-            this.textBoxPW = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.textBoxEM = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBoxNI = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBoxNM = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewDosen)).BeginInit();
+            this.comboBoxDS = new System.Windows.Forms.ComboBox();
+            this.comboBoxDS1 = new System.Windows.Forms.ComboBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.dateTimePickerSet = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePickerEnd = new System.Windows.Forms.DateTimePicker();
+            this.textBoxNM = new System.Windows.Forms.TextBox();
+            this.dateTimePickerEnd1 = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePickerSet1 = new System.Windows.Forms.DateTimePicker();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewKelas)).BeginInit();
             this.SuspendLayout();
             // 
-            // dataGridViewDosen
+            // dataGridViewKelas
             // 
-            this.dataGridViewDosen.AllowUserToAddRows = false;
-            this.dataGridViewDosen.AllowUserToDeleteRows = false;
-            this.dataGridViewDosen.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.dataGridViewKelas.AllowUserToAddRows = false;
+            this.dataGridViewKelas.AllowUserToDeleteRows = false;
+            this.dataGridViewKelas.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridViewDosen.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridViewDosen.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
-            this.dataGridViewDosen.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dataGridViewDosen.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewDosen.Location = new System.Drawing.Point(390, 36);
-            this.dataGridViewDosen.Name = "dataGridViewDosen";
-            this.dataGridViewDosen.ReadOnly = true;
-            this.dataGridViewDosen.Size = new System.Drawing.Size(759, 408);
-            this.dataGridViewDosen.TabIndex = 88;
+            this.dataGridViewKelas.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridViewKelas.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
+            this.dataGridViewKelas.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dataGridViewKelas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewKelas.Location = new System.Drawing.Point(390, 36);
+            this.dataGridViewKelas.Name = "dataGridViewKelas";
+            this.dataGridViewKelas.ReadOnly = true;
+            this.dataGridViewKelas.Size = new System.Drawing.Size(759, 408);
+            this.dataGridViewKelas.TabIndex = 88;
+            this.dataGridViewKelas.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewKelas_CellDoubleClick);
             // 
             // btDel
             // 
@@ -82,6 +83,7 @@
             this.btDel.TabIndex = 87;
             this.btDel.Text = "Hapus";
             this.btDel.UseVisualStyleBackColor = true;
+            this.btDel.Click += new System.EventHandler(this.btDel_Click);
             // 
             // btEdi
             // 
@@ -96,23 +98,7 @@
             this.btEdi.TabIndex = 86;
             this.btEdi.Text = "Edit";
             this.btEdi.UseVisualStyleBackColor = true;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(51, 373);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(58, 19);
-            this.label7.TabIndex = 85;
-            this.label7.Text = "Dosen :";
-            this.label7.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            // 
-            // textBoxPW1
-            // 
-            this.textBoxPW1.Location = new System.Drawing.Point(137, 370);
-            this.textBoxPW1.Name = "textBoxPW1";
-            this.textBoxPW1.Size = new System.Drawing.Size(229, 27);
-            this.textBoxPW1.TabIndex = 84;
+            this.btEdi.Click += new System.EventHandler(this.btEdi_Click);
             // 
             // label8
             // 
@@ -124,13 +110,6 @@
             this.label8.Text = "Tgl Akhir :";
             this.label8.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
-            // textBoxEM1
-            // 
-            this.textBoxEM1.Location = new System.Drawing.Point(137, 340);
-            this.textBoxEM1.Name = "textBoxEM1";
-            this.textBoxEM1.Size = new System.Drawing.Size(229, 27);
-            this.textBoxEM1.TabIndex = 82;
-            // 
             // label9
             // 
             this.label9.AutoSize = true;
@@ -140,13 +119,6 @@
             this.label9.TabIndex = 81;
             this.label9.Text = "Tgl Mulai :";
             this.label9.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            // 
-            // textBoxNI1
-            // 
-            this.textBoxNI1.Location = new System.Drawing.Point(137, 310);
-            this.textBoxNI1.Name = "textBoxNI1";
-            this.textBoxNI1.Size = new System.Drawing.Size(229, 27);
-            this.textBoxNI1.TabIndex = 80;
             // 
             // label10
             // 
@@ -178,57 +150,37 @@
             this.btAdd.TabIndex = 77;
             this.btAdd.Text = "Tambah";
             this.btAdd.UseVisualStyleBackColor = true;
+            this.btAdd.Click += new System.EventHandler(this.btAdd_Click);
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(51, 161);
+            this.label6.Location = new System.Drawing.Point(51, 166);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(58, 19);
             this.label6.TabIndex = 76;
             this.label6.Text = "Dosen :";
             this.label6.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
-            // textBoxPW
-            // 
-            this.textBoxPW.Location = new System.Drawing.Point(137, 159);
-            this.textBoxPW.Name = "textBoxPW";
-            this.textBoxPW.Size = new System.Drawing.Size(229, 27);
-            this.textBoxPW.TabIndex = 75;
-            // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(51, 131);
+            this.label5.Location = new System.Drawing.Point(51, 134);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(73, 19);
             this.label5.TabIndex = 74;
             this.label5.Text = "Tgl Akhir :";
             this.label5.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
-            // textBoxEM
-            // 
-            this.textBoxEM.Location = new System.Drawing.Point(137, 128);
-            this.textBoxEM.Name = "textBoxEM";
-            this.textBoxEM.Size = new System.Drawing.Size(229, 27);
-            this.textBoxEM.TabIndex = 73;
-            // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(51, 101);
+            this.label4.Location = new System.Drawing.Point(51, 102);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(73, 19);
             this.label4.TabIndex = 72;
             this.label4.Text = "Tgl Mulai :";
             this.label4.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            // 
-            // textBoxNI
-            // 
-            this.textBoxNI.Location = new System.Drawing.Point(137, 98);
-            this.textBoxNI.Name = "textBoxNI";
-            this.textBoxNI.Size = new System.Drawing.Size(229, 27);
-            this.textBoxNI.TabIndex = 71;
             // 
             // label3
             // 
@@ -239,13 +191,6 @@
             this.label3.TabIndex = 70;
             this.label3.Text = "Nama :";
             this.label3.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            // 
-            // textBoxNM
-            // 
-            this.textBoxNM.Location = new System.Drawing.Point(137, 67);
-            this.textBoxNM.Name = "textBoxNM";
-            this.textBoxNM.Size = new System.Drawing.Size(229, 27);
-            this.textBoxNM.TabIndex = 69;
             // 
             // label2
             // 
@@ -267,28 +212,95 @@
             this.label1.TabIndex = 67;
             this.label1.Text = "Tambah Kelas";
             // 
+            // comboBoxDS
+            // 
+            this.comboBoxDS.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxDS.FormattingEnabled = true;
+            this.comboBoxDS.Location = new System.Drawing.Point(137, 161);
+            this.comboBoxDS.Name = "comboBoxDS";
+            this.comboBoxDS.Size = new System.Drawing.Size(229, 27);
+            this.comboBoxDS.TabIndex = 89;
+            // 
+            // comboBoxDS1
+            // 
+            this.comboBoxDS1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxDS1.FormattingEnabled = true;
+            this.comboBoxDS1.Location = new System.Drawing.Point(137, 373);
+            this.comboBoxDS1.Name = "comboBoxDS1";
+            this.comboBoxDS1.Size = new System.Drawing.Size(229, 27);
+            this.comboBoxDS1.TabIndex = 91;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(51, 378);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(58, 19);
+            this.label7.TabIndex = 90;
+            this.label7.Text = "Dosen :";
+            this.label7.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // dateTimePickerSet
+            // 
+            this.dateTimePickerSet.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePickerSet.Location = new System.Drawing.Point(137, 98);
+            this.dateTimePickerSet.Name = "dateTimePickerSet";
+            this.dateTimePickerSet.Size = new System.Drawing.Size(229, 27);
+            this.dateTimePickerSet.TabIndex = 92;
+            // 
+            // dateTimePickerEnd
+            // 
+            this.dateTimePickerEnd.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePickerEnd.Location = new System.Drawing.Point(137, 130);
+            this.dateTimePickerEnd.Name = "dateTimePickerEnd";
+            this.dateTimePickerEnd.Size = new System.Drawing.Size(229, 27);
+            this.dateTimePickerEnd.TabIndex = 93;
+            // 
+            // textBoxNM
+            // 
+            this.textBoxNM.Location = new System.Drawing.Point(137, 67);
+            this.textBoxNM.Name = "textBoxNM";
+            this.textBoxNM.Size = new System.Drawing.Size(229, 27);
+            this.textBoxNM.TabIndex = 69;
+            // 
+            // dateTimePickerEnd1
+            // 
+            this.dateTimePickerEnd1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePickerEnd1.Location = new System.Drawing.Point(137, 342);
+            this.dateTimePickerEnd1.Name = "dateTimePickerEnd1";
+            this.dateTimePickerEnd1.Size = new System.Drawing.Size(229, 27);
+            this.dateTimePickerEnd1.TabIndex = 95;
+            // 
+            // dateTimePickerSet1
+            // 
+            this.dateTimePickerSet1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePickerSet1.Location = new System.Drawing.Point(137, 310);
+            this.dateTimePickerSet1.Name = "dateTimePickerSet1";
+            this.dateTimePickerSet1.Size = new System.Drawing.Size(229, 27);
+            this.dateTimePickerSet1.TabIndex = 94;
+            // 
             // UserControlKelas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.dataGridViewDosen);
+            this.Controls.Add(this.dateTimePickerEnd1);
+            this.Controls.Add(this.dateTimePickerSet1);
+            this.Controls.Add(this.dateTimePickerEnd);
+            this.Controls.Add(this.dateTimePickerSet);
+            this.Controls.Add(this.comboBoxDS1);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.comboBoxDS);
+            this.Controls.Add(this.dataGridViewKelas);
             this.Controls.Add(this.btDel);
             this.Controls.Add(this.btEdi);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.textBoxPW1);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.textBoxEM1);
             this.Controls.Add(this.label9);
-            this.Controls.Add(this.textBoxNI1);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.textBoxNM1);
             this.Controls.Add(this.btAdd);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.textBoxPW);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.textBoxEM);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.textBoxNI);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.textBoxNM);
             this.Controls.Add(this.label2);
@@ -297,7 +309,8 @@
             this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "UserControlKelas";
             this.Size = new System.Drawing.Size(1200, 480);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewDosen)).EndInit();
+            this.Load += new System.EventHandler(this.UserControlKelas_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewKelas)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -305,27 +318,27 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dataGridViewDosen;
+        private System.Windows.Forms.DataGridView dataGridViewKelas;
         private RoundedButton btDel;
         private RoundedButton btEdi;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox textBoxPW1;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox textBoxEM1;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox textBoxNI1;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox textBoxNM1;
         private RoundedButton btAdd;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox textBoxPW;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBoxEM;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBoxNI;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBoxNM;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox comboBoxDS;
+        private System.Windows.Forms.ComboBox comboBoxDS1;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.DateTimePicker dateTimePickerSet;
+        private System.Windows.Forms.DateTimePicker dateTimePickerEnd;
+        private System.Windows.Forms.TextBox textBoxNM;
+        private System.Windows.Forms.DateTimePicker dateTimePickerEnd1;
+        private System.Windows.Forms.DateTimePicker dateTimePickerSet1;
     }
 }

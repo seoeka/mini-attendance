@@ -32,7 +32,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(main));
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.panelIkon = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.labelUserName = new System.Windows.Forms.Label();
             this.panelInfo = new System.Windows.Forms.Panel();
@@ -40,6 +39,8 @@
             this.panelBottom = new System.Windows.Forms.Panel();
             this.panelActive = new System.Windows.Forms.Panel();
             this.panelMenu = new System.Windows.Forms.Panel();
+            this.label10 = new System.Windows.Forms.Label();
+            this.panelMain = new System.Windows.Forms.Panel();
             this.buttonKeluar = new System.Windows.Forms.Button();
             this.buttonLapor = new System.Windows.Forms.Button();
             this.buttonAcara = new System.Windows.Forms.Button();
@@ -48,21 +49,21 @@
             this.buttonMhs = new System.Windows.Forms.Button();
             this.buttonDosen = new System.Windows.Forms.Button();
             this.buttonBeranda = new System.Windows.Forms.Button();
-            this.label10 = new System.Windows.Forms.Label();
             this.pictureBoxMin = new System.Windows.Forms.PictureBox();
-            this.panelMain = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.userControlHadir1 = new Mini_Attendance.Projects.user_controls.UserControlHadir();
             this.userControlKelas1 = new Mini_Attendance.Projects.user_controls.UserControlKelas();
             this.userControlMahasiswa1 = new Mini_Attendance.Projects.user_controls.UserControlMahasiswa();
             this.userControlDo1 = new Mini_Attendance.Projects.user_controls.UserControlDo();
             this.userControlBeranda1 = new Mini_Attendance.Projects.user_controls.UserControlBeranda();
             this.panelIkon.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panelInfo.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panelBottom.SuspendLayout();
             this.panelMenu.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMin)).BeginInit();
             this.panelMain.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMin)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // panelIkon
@@ -75,17 +76,6 @@
             this.panelIkon.Name = "panelIkon";
             this.panelIkon.Size = new System.Drawing.Size(182, 180);
             this.panelIkon.TabIndex = 4;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.pictureBox1.Image = global::Mini_Attendance.Properties.Resources.university;
-            this.pictureBox1.Location = new System.Drawing.Point(35, 18);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(100, 100);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 5;
-            this.pictureBox1.TabStop = false;
             // 
             // label1
             // 
@@ -168,6 +158,30 @@
             this.panelMenu.Name = "panelMenu";
             this.panelMenu.Size = new System.Drawing.Size(1018, 110);
             this.panelMenu.TabIndex = 5;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("SF Pro Display", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(209, 19);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(147, 23);
+            this.label10.TabIndex = 7;
+            this.label10.Text = "Selamat Datang";
+            this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // panelMain
+            // 
+            this.panelMain.Controls.Add(this.userControlHadir1);
+            this.panelMain.Controls.Add(this.userControlKelas1);
+            this.panelMain.Controls.Add(this.userControlMahasiswa1);
+            this.panelMain.Controls.Add(this.userControlDo1);
+            this.panelMain.Controls.Add(this.userControlBeranda1);
+            this.panelMain.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelMain.Location = new System.Drawing.Point(0, 180);
+            this.panelMain.Name = "panelMain";
+            this.panelMain.Size = new System.Drawing.Size(1200, 520);
+            this.panelMain.TabIndex = 6;
             // 
             // buttonKeluar
             // 
@@ -313,17 +327,6 @@
             this.buttonBeranda.UseVisualStyleBackColor = true;
             this.buttonBeranda.Click += new System.EventHandler(this.buttonBeranda_Click);
             // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("SF Pro Display", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(209, 19);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(147, 23);
-            this.label10.TabIndex = 7;
-            this.label10.Text = "Selamat Datang";
-            this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
             // pictureBoxMin
             // 
             this.pictureBoxMin.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -337,17 +340,28 @@
             this.pictureBoxMin.Click += new System.EventHandler(this.pictureBoxMin_Click);
             this.pictureBoxMin.MouseHover += new System.EventHandler(this.pictureBoxMin_MouseHover);
             // 
-            // panelMain
+            // pictureBox1
             // 
-            this.panelMain.Controls.Add(this.userControlKelas1);
-            this.panelMain.Controls.Add(this.userControlMahasiswa1);
-            this.panelMain.Controls.Add(this.userControlDo1);
-            this.panelMain.Controls.Add(this.userControlBeranda1);
-            this.panelMain.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelMain.Location = new System.Drawing.Point(0, 180);
-            this.panelMain.Name = "panelMain";
-            this.panelMain.Size = new System.Drawing.Size(1200, 520);
-            this.panelMain.TabIndex = 6;
+            this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.pictureBox1.Image = global::Mini_Attendance.Properties.Resources.university;
+            this.pictureBox1.Location = new System.Drawing.Point(35, 18);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(100, 100);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 5;
+            this.pictureBox1.TabStop = false;
+            // 
+            // userControlHadir1
+            // 
+            this.userControlHadir1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.userControlHadir1.Font = new System.Drawing.Font("SF Pro Display", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.userControlHadir1.Location = new System.Drawing.Point(0, 21);
+            this.userControlHadir1.Margin = new System.Windows.Forms.Padding(4);
+            this.userControlHadir1.Name = "userControlHadir1";
+            this.userControlHadir1.Size = new System.Drawing.Size(1200, 480);
+            this.userControlHadir1.TabIndex = 4;
+            this.userControlHadir1.Visible = false;
             // 
             // userControlKelas1
             // 
@@ -413,15 +427,15 @@
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.panelIkon.ResumeLayout(false);
             this.panelIkon.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panelInfo.ResumeLayout(false);
             this.panelInfo.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panelBottom.ResumeLayout(false);
             this.panelMenu.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMin)).EndInit();
             this.panelMain.ResumeLayout(false);
             this.panelMain.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMin)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -453,5 +467,6 @@
         private Projects.user_controls.UserControlDo userControlDo1;
         private Projects.user_controls.UserControlMahasiswa userControlMahasiswa1;
         private Projects.user_controls.UserControlKelas userControlKelas1;
+        private Projects.user_controls.UserControlHadir userControlHadir1;
     }
 }

@@ -191,6 +191,7 @@
             this.labelError.TabIndex = 5;
             this.labelError.Text = "Username atau Password Anda salah!";
             this.labelError.Visible = false;
+            this.labelError.Click += new System.EventHandler(this.labelError_Click);
             // 
             // lblUser
             // 

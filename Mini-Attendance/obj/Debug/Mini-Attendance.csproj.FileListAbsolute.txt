@@ -13,3 +13,4 @@ C:\Users\ekasari\source\repos\Mini-Attendance\Mini-Attendance\obj\Debug\Mini-Att
 C:\Users\ekasari\source\repos\Mini-Attendance\Mini-Attendance\obj\Debug\Mini-Attendance.pdb
 C:\Users\ekasari\source\repos\Mini-Attendance\Mini-Attendance\obj\Debug\Mini_Attendance.Projects.user_controls.UserControlDo.resources
 C:\Users\ekasari\source\repos\Mini-Attendance\Mini-Attendance\obj\Debug\Mini_Attendance.Projects.user_controls.UserControlKelas.resources
+C:\Users\ekasari\source\repos\Mini-Attendance\Mini-Attendance\obj\Debug\Mini_Attendance.Projects.user_controls.UserControlHadir.resources

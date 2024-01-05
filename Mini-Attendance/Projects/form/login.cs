@@ -10,11 +10,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace Mini_Attendance
 {
     public partial class login : Form
     {
+        private SqlConnection connection;
         private string sql = @"Data Source = .\SQLEXPRESS;
                         Initial Catalog = db_attendance;
                         Integrated Security = True;";
@@ -25,6 +27,7 @@ namespace Mini_Attendance
             pictureBoxError.Visible = false;
             labelError.Visible = false;
             textBoxPW.UseSystemPasswordChar = true;
+            connection = new SqlConnection(sql); // Initialize the class-level connection
         }
 
         private void pictureBoxMin_MouseHover(object sender, EventArgs e)
@@ -62,39 +65,41 @@ namespace Mini_Attendance
 
             string userRole = string.Empty;
             string originalUsername = string.Empty;
+            SqlDataReader reader = null;
+
+            string query = "SELECT * FROM Administrator WHERE Username = @username AND Password = @password " +
+                           "OR EXISTS (SELECT * FROM Dosen WHERE NIP = @username AND Password = @password) " +
+                           "OR EXISTS (SELECT * FROM Mahasiswa WHERE NIM = @username AND Password = @password)";
 
             try
             {
-                using (SqlConnection connection = new SqlConnection(sql))
+                using (SqlCommand command = new SqlCommand(query, connection))
                 {
                     connection.Open();
+                    command.Parameters.AddWithValue("@username", username);
+                    command.Parameters.AddWithValue("@password", password);
 
-                    using (SqlCommand command = new SqlCommand("SELECT * FROM Mahasiswa WHERE NIM = @username AND Password = @password " +
-                                            "OR EXISTS (SELECT * FROM Dosen WHERE NIP = @username AND Password = @password) " +
-                                            "OR EXISTS (SELECT * FROM Administrator WHERE Username = @username AND Password = @password)", connection))
+                    reader = command.ExecuteReader();
+
+                    if (reader.Read())
                     {
-                        command.Parameters.AddWithValue("@username", username);
-                        command.Parameters.AddWithValue("@password", password);
+                        reader.Close();
 
-                        using (SqlDataReader reader = command.ExecuteReader())
-                        {
-                            if (reader.Read())
-                            {
-                                var result = DetermineUserRole(username);
-                                userRole = result.userRole;
-                                originalUsername = result.username;
+                        var result = DetermineUserRole(username);
+                        userRole = result.userRole;
+                        originalUsername = result.username;
+                        MessageBox.Show($"Username: {originalUsername}", "Username Result", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                                main mainForm = new main(userRole, originalUsername);
-                                mainForm.Show();
-                                this.Hide();
-                            }
-                            else
-                            {
-                                labelError.Text = "Username atau password salah!";
-                                labelError.Visible = true;
-                                pictureBoxError.Visible = true;
-                            }
-                        }
+
+                        main mainForm = new main(userRole, originalUsername);
+                        mainForm.Show();
+                        this.Hide();
+                    }
+                    else
+                    {
+                        labelError.Text = "Username atau password salah!";
+                        labelError.Visible = true;
+                        pictureBoxError.Visible = true;
                     }
                 }
             }
@@ -103,6 +108,13 @@ namespace Mini_Attendance
                 labelError.Text = "Error: " + ex.Message;
                 labelError.Visible = true;
                 pictureBoxError.Visible = true;
+            }
+            finally
+            {
+                if (reader != null && !reader.IsClosed)
+                {
+                    reader.Close();
+                }
             }
         }
 
@@ -130,55 +142,78 @@ namespace Mini_Attendance
             toolTip.SetToolTip(pictureBoxUnhide, "Perlihatkan Password");
         }
 
-        private (string userRole, string username) DetermineUserRole(string inputUsername)
+        private (string userRole, string username) DetermineUserRole(string username)
         {
-            using (SqlConnection connection = new SqlConnection(sql))
+            try
             {
-                connection.Open();
-
-                using (SqlCommand command = new SqlCommand("SELECT * FROM Mahasiswa WHERE NIM = @username", connection))
+                if (connection.State != ConnectionState.Open)
                 {
-                    command.Parameters.AddWithValue("@username", inputUsername);
+                    connection.Open();
+                }
 
-                    using (SqlDataReader reader = command.ExecuteReader())
+                string query = "SELECT * FROM Administrator WHERE Username = @username";
+
+                using (SqlCommand adminCommand = new SqlCommand(query, connection))
+                {
+                    adminCommand.Parameters.AddWithValue("@username", username);
+
+                    using (SqlDataReader adminReader = adminCommand.ExecuteReader())
                     {
-                        if (reader.Read())
+                        if (adminReader.Read())
                         {
-                            return ("Mahasiswa", inputUsername);
+                            return ("Admin", username);
                         }
                     }
                 }
 
-                using (SqlCommand command = new SqlCommand("SELECT * FROM Dosen WHERE NIP = @username", connection))
-                {
-                    command.Parameters.AddWithValue("@username", inputUsername);
+                query = "SELECT * FROM Dosen WHERE NIP = @username";
 
-                    using (SqlDataReader reader = command.ExecuteReader())
+                using (SqlCommand dosenCommand = new SqlCommand(query, connection))
+                {
+                    dosenCommand.Parameters.AddWithValue("@username", username);
+
+                    using (SqlDataReader dosenReader = dosenCommand.ExecuteReader())
                     {
-                        if (reader.Read())
+                        if (dosenReader.Read())
                         {
-                            return ("Dosen", inputUsername);
+                            return ("Dosen", username);
                         }
                     }
                 }
 
-                using (SqlCommand command = new SqlCommand("SELECT * FROM Administrator WHERE Username = @username", connection))
-                {
-                    command.Parameters.AddWithValue("@username", inputUsername);
+                query = "SELECT * FROM Mahasiswa WHERE NIM = @username";
 
-                    using (SqlDataReader reader = command.ExecuteReader())
+                using (SqlCommand mahasiswaCommand = new SqlCommand(query, connection))
+                {
+                    mahasiswaCommand.Parameters.AddWithValue("@username", username);
+
+                    using (SqlDataReader mahasiswaReader = mahasiswaCommand.ExecuteReader())
                     {
-                        if (reader.Read())
+                        if (mahasiswaReader.Read())
                         {
-                            return ("Admin", inputUsername);
+                            return ("Mahasiswa", username);
                         }
                     }
+                }
+                return ("Unknown", username);
+            }
+            finally
+            {
+                if (connection.State == ConnectionState.Open)
+                {
+                    connection.Close();
                 }
             }
-
-            // Jika tidak ada kecocokan, kembalikan tuple kosong
-            return (string.Empty, string.Empty);
         }
 
+
+
+
+        private void labelError_Click(object sender, EventArgs e)
+        {
+            Clipboard.SetText(labelError.Text);
+            Clipboard.SetText(labelError.Text);
+            MessageBox.Show("Error message copied to clipboard", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
     }
 }

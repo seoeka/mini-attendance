@@ -16,7 +16,7 @@ namespace Mini_Attendance.form
     public partial class main : Form
     {
         private SqlConnection connection;
-        private string userRole, usernama;
+        private string userRole, originalUsername;
         private login loginForm;
 
         public main(string role, string userName)
@@ -24,7 +24,7 @@ namespace Mini_Attendance.form
             InitializeComponent();
 
             userRole = role;
-            usernama = userName;
+            originalUsername = userName;
             UpdateRoleLabel();
 
             if (role == "Dosen")
@@ -64,51 +64,74 @@ namespace Mini_Attendance.form
         {
             if (userRole == "Mahasiswa")
             {
-                labelUserName.Text = GetMahasiswaName(usernama);
+                labelUserName.Text = GetMahasiswaName(originalUsername);
             }
             else if (userRole == "Dosen")
             {
-                labelUserName.Text = GetDosenName(usernama);
+                labelUserName.Text = GetDosenName(originalUsername);
             }
             else if (userRole == "Admin")
             {
-                labelUserName.Text = userRole;
+                labelUserName.Text = "Admin";
             }
         }
 
-        private string GetMahasiswaName(string username)
+        private string GetName(string tableName, string columnName, string parameterName, string username)
         {
-            using (SqlCommand command = new SqlCommand("SELECT Nama FROM Mahasiswa WHERE NIM = @username", connection))
+            try
             {
-                command.Parameters.AddWithValue("@username", username);
-
-                using (SqlDataReader reader = command.ExecuteReader())
+                if (connection == null)
                 {
-                    if (reader.Read())
+                    connection = DatabaseManager.GetConnection();
+                }
+
+                if (connection.State != ConnectionState.Open)
+                {
+                    connection.Open();
+                }
+
+                string query = $"SELECT {columnName} FROM {tableName} WHERE {parameterName} = @username";
+
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@username", username);
+
+                    using (SqlDataReader reader = command.ExecuteReader())
                     {
-                        return reader["Nama"].ToString();
+                        if (reader.Read())
+                        {
+                            return reader[columnName].ToString();
+                        }
                     }
                 }
-            }   
-            return string.Empty;
+
+                return string.Empty;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error in GetName: {ex.Message}");
+                return string.Empty;
+            }
+            finally
+            {
+                if (connection.State == ConnectionState.Open)
+                {
+                    connection.Close();
+                }
+            }
+        }
+
+
+        private string GetMahasiswaName(string username)
+        {
+            return GetName("Mahasiswa", "Nama", "NIM", username);
         }
 
         private string GetDosenName(string username)
         {
-            using (SqlCommand command = new SqlCommand("SELECT Nama FROM Dosen WHERE NIP = @username", connection))
-            {
-                command.Parameters.AddWithValue("@username", username);
-
-                using (SqlDataReader reader = command.ExecuteReader())
-                {
-                    if (reader.Read())
-                    {
-                        return reader["Nama"].ToString();
-                    }
-                }
-            }
-            return string.Empty;
+            return GetName("Dosen", "Nama", "NIP", username);
         }
+
 
         private void ucActive(Control button)
         {
@@ -125,6 +148,11 @@ namespace Mini_Attendance.form
             DialogResult result = MessageBox.Show("Apakah Anda yakin ingin keluar?", "Konfirmasi Keluar", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
             {
+                if (connection.State == ConnectionState.Open)
+                {
+                    connection.Close();
+                }
+
                 this.Close();
                 loginForm.Show();
             }
@@ -137,6 +165,7 @@ namespace Mini_Attendance.form
             HideAndClearUserControl(userControlDo1);
             HideAndClearUserControl(userControlMahasiswa1);
             HideAndClearUserControl(userControlKelas1);
+            HideAndClearUserControl(userControlHadir1);
         }
 
         private void buttonDosen_Click(object sender, EventArgs e)
@@ -146,6 +175,7 @@ namespace Mini_Attendance.form
             userControlDo1.Visible = true;
             HideAndClearUserControl(userControlMahasiswa1);
             HideAndClearUserControl(userControlKelas1);
+            HideAndClearUserControl(userControlHadir1);
         }
 
         private void buttonMhs_Click(object sender, EventArgs e)
@@ -155,6 +185,7 @@ namespace Mini_Attendance.form
             HideAndClearUserControl(userControlDo1);
             userControlMahasiswa1.Visible = true;
             HideAndClearUserControl(userControlKelas1);
+            HideAndClearUserControl(userControlHadir1);
         }
 
         private void buttonKelas_Click(object sender, EventArgs e)
@@ -164,6 +195,7 @@ namespace Mini_Attendance.form
             HideAndClearUserControl(userControlDo1);
             HideAndClearUserControl(userControlMahasiswa1);
             userControlKelas1.Visible = true;
+            HideAndClearUserControl(userControlHadir1);
         }
 
         private void buttonHadir_Click(object sender, EventArgs e)
@@ -173,6 +205,9 @@ namespace Mini_Attendance.form
             HideAndClearUserControl(userControlDo1);
             HideAndClearUserControl(userControlMahasiswa1);
             HideAndClearUserControl(userControlKelas1);
+            userControlHadir1.UserRole = userRole;
+            userControlHadir1.Visible = true;
+
         }
 
         private void buttonAcara_Click(object sender, EventArgs e)
@@ -182,6 +217,7 @@ namespace Mini_Attendance.form
             HideAndClearUserControl(userControlDo1);
             HideAndClearUserControl(userControlMahasiswa1);
             HideAndClearUserControl(userControlKelas1);
+            HideAndClearUserControl(userControlHadir1);
         }
 
         private void buttonLapor_Click(object sender, EventArgs e)
@@ -191,6 +227,7 @@ namespace Mini_Attendance.form
             HideAndClearUserControl(userControlDo1);
             HideAndClearUserControl(userControlMahasiswa1);
             HideAndClearUserControl(userControlKelas1);
+            HideAndClearUserControl(userControlHadir1);
         }
 
         private void pictureBoxMin_MouseHover(object sender, EventArgs e)

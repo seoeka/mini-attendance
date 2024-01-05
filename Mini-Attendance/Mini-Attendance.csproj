@@ -79,6 +79,12 @@
     <Compile Include="Projects\user-controls\UserControlDo.Designer.cs">
       <DependentUpon>UserControlDo.cs</DependentUpon>
     </Compile>
+    <Compile Include="Projects\user-controls\UserControlHadir.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Projects\user-controls\UserControlHadir.Designer.cs">
+      <DependentUpon>UserControlHadir.cs</DependentUpon>
+    </Compile>
     <Compile Include="Projects\user-controls\UserControlKelas.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -103,6 +109,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Projects\user-controls\UserControlDo.resx">
       <DependentUpon>UserControlDo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Projects\user-controls\UserControlHadir.resx">
+      <DependentUpon>UserControlHadir.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Projects\user-controls\UserControlKelas.resx">
       <DependentUpon>UserControlKelas.cs</DependentUpon>
